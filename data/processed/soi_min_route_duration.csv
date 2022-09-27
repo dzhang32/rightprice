@@ -1,0 +1,957 @@
+,soi,station,min_route_duration
+0,Victoria,Temple,14.533333333333333
+1,Victoria,Blackfriars,17.866666666666667
+2,Victoria,Mansion House,20.766666666666666
+3,Victoria,Cannon Street,22.766666666666666
+4,Victoria,Monument,22.016666666666666
+5,Victoria,Tower Hill,24.416666666666668
+6,Victoria,Aldgate,26.616666666666667
+7,Victoria,Liverpool Street,28.4
+8,Victoria,Moorgate,27.933333333333334
+9,Victoria,Barbican,23.3
+10,Victoria,Farringdon,22.933333333333334
+11,Victoria,King's Cross St. Pancras,16.8
+12,Victoria,Euston Square,18.2
+13,Victoria,Great Portland Street,16.383333333333333
+14,Victoria,Baker Street,16.033333333333335
+15,Victoria,Edgware Road (Circle Line),21.566666666666666
+16,Victoria,Paddington,24.666666666666668
+17,Victoria,Bayswater,22.9
+18,Victoria,High Street Kensington,23.283333333333335
+19,Victoria,Gloucester Road,15.616666666666667
+20,Victoria,South Kensington,15.75
+21,Victoria,Pimlico,10.466666666666667
+22,Victoria,Warren Street,13.6
+23,Victoria,Queensway,21.866666666666667
+24,Victoria,Hyde Park Corner,10.3
+25,Victoria,Knightsbridge,16.116666666666667
+26,Victoria,Leicester Square,17.9
+27,Victoria,Covent Garden,18.266666666666666
+28,Victoria,Russell Square,23.916666666666668
+29,Victoria,Earl's Court,18.583333333333332
+30,Victoria,Notting Hill Gate,22.633333333333333
+31,Victoria,Lancaster Gate,21.733333333333334
+32,Victoria,Marble Arch,14.616666666666667
+33,Victoria,Bond Street,14.833333333333334
+34,Victoria,Bank,24.283333333333335
+35,Victoria,Oxford Circus,13.683333333333334
+36,Victoria,Holborn,19.716666666666665
+37,Victoria,Chancery Lane,23.333333333333332
+38,Victoria,St. Paul's,21.2
+39,Victoria,Paddington,25.9
+40,Victoria,Embankment,11.3
+41,Victoria,Westminster,8.883333333333333
+42,Victoria,Euston,15.833333333333334
+43,Victoria,Waterloo,9.833333333333334
+44,Victoria,Green Park,13.433333333333334
+45,Victoria,Paddington (H&C Line),
+46,Victoria,Piccadilly Circus,17.816666666666666
+47,Victoria,Charing Cross,16.366666666666667
+48,Victoria,Lambeth North,21.866666666666667
+49,Victoria,Edgware Road (Bakerloo),19.883333333333333
+50,Victoria,Marylebone,17.983333333333334
+51,Victoria,Regent's Park,20.383333333333333
+52,Victoria,Sloane Square,12.5
+53,Victoria,St. James's Park,9.933333333333334
+54,Victoria,Goodge Street,17.85
+55,Victoria,Tottenham Court Road,14.983333333333333
+56,Victoria,Borough,23.3
+57,Victoria,Old Street,27.616666666666667
+58,Victoria,Angel,24.483333333333334
+59,Victoria,Shoreditch High Street,33.88333333333333
+60,Victoria,Aldgate East,30.216666666666665
+61,Victoria,Southwark,19.2
+62,Victoria,London Bridge,21.483333333333334
+63,Victoria,Liverpool Street,27.916666666666668
+64,Victoria,Liverpool Street,26.0
+65,Victoria,TOWER GATEWAY - DLR,24.316666666666666
+66,Victoria,BANK - DLR,21.7
+67,Victoria,Euston,17.15
+68,Victoria,East Putney,30.266666666666666
+69,Victoria,Putney Bridge,28.333333333333332
+70,Victoria,Parsons Green,25.366666666666667
+71,Victoria,White City,32.233333333333334
+72,Victoria,Shepherd's Bush,36.43333333333333
+73,Victoria,Holland Park,25.833333333333332
+74,Victoria,Brixton,16.483333333333334
+75,Victoria,Vauxhall,7.55
+76,Victoria,Highbury & Islington,21.583333333333332
+77,Victoria,Caledonian Road,21.65
+78,Victoria,Holloway Road,23.883333333333333
+79,Victoria,Arsenal,22.966666666666665
+80,Victoria,Manor House,27.766666666666666
+81,Victoria,Shepherd's Bush Market,33.083333333333336
+82,Victoria,Goldhawk Road,35.56666666666667
+83,Victoria,Latimer Road,34.71666666666667
+84,Victoria,Ladbroke Grove,30.783333333333335
+85,Victoria,Royal Oak,31.733333333333334
+86,Victoria,Westbourne Park,31.616666666666667
+87,Victoria,Queen's Park,29.933333333333334
+88,Victoria,Mile End,30.333333333333332
+89,Victoria,Bethnal Green,30.516666666666666
+90,Victoria,Rotherhithe,24.716666666666665
+91,Victoria,Kensington (Olympia),29.15
+92,Victoria,Finsbury Park,22.566666666666666
+93,Victoria,Stockwell,14.9
+94,Victoria,Hammersmith (H&C Line),22.9
+95,Victoria,Kensal Green,35.1
+96,Victoria,Elephant & Castle,20.5
+97,Victoria,Warwick Avenue,23.383333333333333
+98,Victoria,Maida Vale,24.333333333333332
+99,Victoria,Kilburn Park,26.566666666666666
+100,Victoria,Ravenscourt Park,30.95
+101,Victoria,Hammersmith (Dist&Picc Line),27.233333333333334
+102,Victoria,Kilburn,23.95
+103,Victoria,West Hampstead,23.383333333333333
+104,Victoria,Swiss Cottage,20.166666666666668
+105,Victoria,Finchley Road,18.8
+106,Victoria,Archway,26.85
+107,Victoria,Clapham South,21.733333333333334
+108,Victoria,Clapham Common,19.833333333333332
+109,Victoria,Clapham North,17.683333333333334
+110,Victoria,Belsize Park,25.133333333333333
+111,Victoria,Hampstead,25.4
+112,Victoria,Mornington Crescent,22.0
+113,Victoria,Chalk Farm,23.75
+114,Victoria,Camden Town,19.866666666666667
+115,Victoria,Kentish Town,24.966666666666665
+116,Victoria,Tufnell Park,25.0
+117,Victoria,Oval,18.933333333333334
+118,Victoria,Kennington,21.55
+119,Victoria,East Acton,31.983333333333334
+120,Victoria,Wood Lane,31.466666666666665
+121,Victoria,Canada Water,21.666666666666668
+122,Victoria,Shadwell,30.45
+123,Victoria,Whitechapel,29.683333333333334
+124,Victoria,Hoxton,35.1
+125,Victoria,Haggerston,34.56666666666667
+126,Victoria,Dalston Junction,32.25
+127,Victoria,New Cross,32.3
+128,Victoria,Brockley,35.61666666666667
+129,Victoria,West Kensington,25.683333333333334
+130,Victoria,Barons Court,24.966666666666665
+131,Victoria,Fulham Broadway,22.166666666666668
+132,Victoria,West Brompton,23.683333333333334
+133,Victoria,Stamford Brook,33.86666666666667
+134,Victoria,Stepney Green,31.45
+135,Victoria,Whitechapel,28.466666666666665
+136,Victoria,Bow Road,31.333333333333332
+137,Victoria,St. John's Wood,17.283333333333335
+138,Victoria,Canada Water,25.133333333333333
+139,Victoria,Bermondsey,23.283333333333335
+140,Victoria,Canary Wharf,26.833333333333332
+141,Victoria,Bethnal Green,36.2
+142,Victoria,Cambridge Heath,39.78333333333333
+143,Victoria,Clapham High Street,17.766666666666666
+144,Victoria,Denmark Hill,30.6
+145,Victoria,Hackney Downs,34.63333333333333
+146,Victoria,London Fields,38.166666666666664
+147,Victoria,Peckham Rye,33.3
+148,Victoria,Queens Road Peckham,30.716666666666665
+149,Victoria,Rectory Road,37.63333333333333
+150,Victoria,Wandsworth Road,24.25
+151,Victoria,Stoke Newington,36.13333333333333
+152,Victoria,Brondesbury,28.216666666666665
+153,Victoria,Brondesbury Park,34.36666666666667
+154,Victoria,Caledonian Road & Barnsbury,28.066666666666666
+155,Victoria,Camden Road,25.1
+156,Victoria,Canonbury,27.683333333333334
+157,Victoria,Dalston Kingsland,29.866666666666667
+158,Victoria,Finchley Road & Frognal,23.966666666666665
+159,Victoria,Gospel Oak,33.983333333333334
+160,Victoria,Hackney Central,31.716666666666665
+161,Victoria,Hackney Wick,39.81666666666667
+162,Victoria,Hampstead Heath,31.766666666666666
+163,Victoria,Homerton,34.45
+164,Victoria,Kensal Green,35.65
+165,Victoria,Kensal Rise,35.983333333333334
+166,Victoria,Kentish Town West,27.9
+167,Victoria,Kilburn High Road,31.65
+168,Victoria,New Cross Gate,32.15
+169,Victoria,ALL SAINTS - DLR,38.53333333333333
+170,Victoria,BLACKWALL - DLR,33.833333333333336
+171,Victoria,BOW CHURCH - DLR,35.45
+172,Victoria,CANARY WHARF - DLR,24.0
+173,Victoria,CROSSHARBOUR - DLR,35.06666666666667
+174,Victoria,CUTTY SARK - DLR,38.1
+175,Victoria,DEPTFORD BRIDGE - DLR,39.7
+176,Victoria,DEVONS ROAD - DLR,39.85
+177,Victoria,ELVERSON ROAD - DLR,42.8
+178,Victoria,HERON QUAYS - DLR,25.6
+179,Victoria,ISLAND GARDENS - DLR,39.56666666666667
+180,Victoria,LANGDON PARK - DLR,40.266666666666666
+181,Victoria,LEWISHAM - DLR,39.483333333333334
+182,Victoria,LIMEHOUSE - DLR,32.21666666666667
+183,Victoria,MUDCHUTE - DLR,38.983333333333334
+184,Victoria,POPLAR - DLR,30.466666666666665
+185,Victoria,SHADWELL - DLR,29.216666666666665
+186,Victoria,SOUTH QUAY - DLR,32.13333333333333
+187,Victoria,WEST INDIA QUAY - DLR,31.266666666666666
+188,Victoria,WESTFERRY - DLR,33.2
+189,Victoria,South Hampstead,24.666666666666668
+190,Victoria,Surrey Quays,29.05
+191,Victoria,Upper Holloway,33.53333333333333
+192,Victoria,Wapping,30.566666666666666
+193,Victoria,West Hampstead,24.016666666666666
+194,Victoria,Shepherds Bush,29.633333333333333
+195,Victoria,Kensington Olympia,31.383333333333333
+196,Victoria,Westompton,23.583333333333332
+197,Victoria,Clapham Junction,18.15
+198,Victoria,Imperial Wharf,28.966666666666665
+199,Victoria,Queens Park,29.933333333333334
+200,Victoria,Highbury & Islington,20.733333333333334
+201,Victoria,Chiswick Park,33.9
+202,Victoria,Wimbledon Park,35.61666666666667
+203,Victoria,Southfields,31.283333333333335
+204,Victoria,Seven Sisters,26.033333333333335
+205,Victoria,Blackhorse Road,29.183333333333334
+206,Victoria,Tottenham Hale,30.016666666666666
+207,Victoria,Brent Cross,32.65
+208,Victoria,Golders Green,31.0
+209,Victoria,South Ealing,39.21666666666667
+210,Victoria,North Ealing,40.583333333333336
+211,Victoria,Park Royal,46.93333333333333
+212,Victoria,Hanger Lane,36.35
+213,Victoria,North Acton,33.55
+214,Victoria,Leyton,37.18333333333333
+215,Victoria,Bromley-by-Bow,36.733333333333334
+216,Victoria,Plaistow,42.53333333333333
+217,Victoria,Upton Park,44.53333333333333
+218,Victoria,Turnpike Lane,29.85
+219,Victoria,Wood Green,31.883333333333333
+220,Victoria,Bounds Green,33.68333333333333
+221,Victoria,West Ham,37.05
+222,Victoria,Walthamstow Central,30.716666666666665
+223,Victoria,Ealing Broadway,40.28333333333333
+224,Victoria,Acton Town,30.05
+225,Victoria,Ealing Common,35.88333333333333
+226,Victoria,South Wimbledon,32.2
+227,Victoria,Northfields,36.916666666666664
+228,Victoria,Harlesden,38.81666666666667
+229,Victoria,Kew Gardens,31.733333333333334
+230,Victoria,Gunnersbury,30.55
+231,Victoria,North Greenwich,26.733333333333334
+232,Victoria,Canning Town,31.15
+233,Victoria,Willesden Green,25.683333333333334
+234,Victoria,Colliers Wood,30.2
+235,Victoria,Tooting Broadway,26.95
+236,Victoria,Tooting Bec,25.533333333333335
+237,Victoria,Balham,22.65
+238,Victoria,Hendon Central,34.8
+239,Victoria,Wimbledon,30.133333333333333
+240,Victoria,Honor Oak Park,37.53333333333333
+241,Victoria,Forest Hill,39.766666666666666
+242,Victoria,Sydenham,42.96666666666667
+243,Victoria,Turnham Green,32.45
+244,Victoria,Neasden,29.816666666666666
+245,Victoria,Dollis Hill,29.8
+246,Victoria,Stonebridge Park,43.55
+247,Victoria,Willesden Junction,41.36666666666667
+248,Victoria,East Finchley,32.233333333333334
+249,Victoria,Highgate,30.15
+250,Victoria,West Acton,45.483333333333334
+251,Victoria,Stratford,38.4
+252,Victoria,Bruce Grove,34.36666666666667
+253,Victoria,Seven Sisters,26.15
+254,Victoria,Walthamstow St James Street,39.166666666666664
+255,Victoria,White Hart Lane,39.06666666666667
+256,Victoria,Stamford Hill,32.5
+257,Victoria,Acton Central,40.833333333333336
+258,Victoria,Blackhorse Road,29.516666666666666
+259,Victoria,Crouch Hill,28.0
+260,Victoria,Harlesden,41.45
+261,Victoria,Harringay Green Lanes,34.5
+262,Victoria,Kew Gardens,45.45
+263,Victoria,Leyton Midland Road,43.63333333333333
+264,Victoria,Leytonstone High Road,45.166666666666664
+265,Victoria,Stratford,32.9
+266,Victoria,Maryland,36.61666666666667
+267,Victoria,Forest Gate,39.0
+268,Victoria,Wimbledon (Tramlink),32.11666666666667
+269,Victoria,Dundonald Road,34.53333333333333
+270,Victoria,Merton Park,36.65
+271,Victoria,BECKTON - DLR,49.583333333333336
+272,Victoria,BECKTON PARK - DLR,47.05
+273,Victoria,CUSTOM HOUSE - DLR,44.266666666666666
+274,Victoria,CYPRUS - DLR,51.016666666666666
+275,Victoria,GALLIONS REACH - DLR,49.43333333333333
+276,Victoria,KING GEORGE V - DLR,45.166666666666664
+277,Victoria,LONDON CITY AIRPORT - DLR,43.78333333333333
+278,Victoria,PONTOON DOCK - DLR,42.56666666666667
+279,Victoria,PRINCE REGENT - DLR,43.733333333333334
+280,Victoria,ROYAL ALBERT - DLR,38.0
+281,Victoria,ROYAL VICTORIA - DLR,33.5
+282,Victoria,WEST SILVERTOWN - DLR,34.63333333333333
+283,Victoria,CANNING TOWN - DLR,29.666666666666668
+284,Victoria,EAST INDIA - DLR,36.43333333333333
+285,Victoria,GREENWICH - DLR,39.93333333333333
+286,Victoria,PUDDING MILL LANE - DLR,40.15
+287,Victoria,WEST HAM - DLR,32.36666666666667
+288,Victoria,STRATFORD - DLR,33.7
+289,Victoria,STAR LANE - DLR,38.38333333333333
+290,Victoria,ABBEY ROAD - DLR,40.666666666666664
+291,Victoria,STRATFORD HIGH STREET - DLR,37.85
+292,Victoria,STRATFORD INTERNATIONAL - DLR,34.46666666666667
+293,Victoria,South Acton,41.15
+294,Victoria,South Tottenham,30.3
+295,Victoria,Stonebridge Park,44.71666666666667
+296,Victoria,Walthamstow Queens Road,34.166666666666664
+297,Victoria,Wanstead Park,39.9
+298,Victoria,Gunnersbury,39.88333333333333
+299,Victoria,Stratford,37.88333333333333
+300,Victoria,Hainault,63.18333333333333
+301,Victoria,Grange Hill,72.21666666666667
+302,Victoria,Colindale,38.03333333333333
+303,Victoria,Burnt Oak,41.0
+304,Victoria,Mill Hill East,41.71666666666667
+305,Victoria,Finchley Central,37.8
+306,Victoria,Sudbury Hill,53.45
+307,Victoria,Sudbury Town,55.5
+308,Victoria,Alperton,40.666666666666664
+309,Victoria,Arnos Grove,38.86666666666667
+310,Victoria,Southgate,41.983333333333334
+311,Victoria,Perivale,40.96666666666667
+312,Victoria,Greenford,43.166666666666664
+313,Victoria,Snaresbrook,42.4
+314,Victoria,Leytonstone,39.916666666666664
+315,Victoria,Wanstead,48.833333333333336
+316,Victoria,Redbridge,49.4
+317,Victoria,Gants Hill,49.75
+318,Victoria,South Woodford,43.916666666666664
+319,Victoria,Newbury Park,53.7
+320,Victoria,Barkingside,62.583333333333336
+321,Victoria,Fairlop,58.46666666666667
+322,Victoria,Woodford,47.43333333333333
+323,Victoria,Roding Valley,53.93333333333333
+324,Victoria,Chigwell,59.65
+325,Victoria,East Ham,44.68333333333333
+326,Victoria,Upney,53.333333333333336
+327,Victoria,Barking,45.9
+328,Victoria,Morden,34.416666666666664
+329,Victoria,Hounslow Central,47.88333333333333
+330,Victoria,Hounslow East,47.083333333333336
+331,Victoria,Osterley,46.516666666666666
+332,Victoria,Boston Manor,40.35
+333,Victoria,Wembley Central,45.35
+334,Victoria,North Wembley,47.416666666666664
+335,Victoria,Richmond,46.31666666666667
+336,Victoria,Preston Road,35.53333333333333
+337,Victoria,Wembley Park,31.75
+338,Victoria,Kingsbury,40.95
+339,Victoria,Queensbury,39.15
+340,Victoria,South Kenton,40.45
+341,Victoria,Kenton,41.96666666666667
+342,Victoria,Woodside Park,38.38333333333333
+343,Victoria,West Finchley,38.2
+344,Victoria,Totteridge & Whetstone,40.583333333333336
+345,Victoria,Northwick Park,33.333333333333336
+346,Victoria,Norwood Junction,34.13333333333333
+347,Victoria,Edmondton Green,44.266666666666666
+348,Victoria,Highams Park,42.9
+349,Victoria,Walthamstow Wood Street,39.733333333333334
+350,Victoria,Silver Street,41.88333333333333
+351,Victoria,Kenton,42.18333333333333
+352,Victoria,North Wembley,47.083333333333336
+353,Victoria,Manor Park,40.8
+354,Victoria,Ilford,47.15
+355,Victoria,Seven Kings,45.8
+356,Victoria,Goodmayes,55.28333333333333
+357,Victoria,Morden Road,39.65
+358,Victoria,Phipps Bridge,41.5
+359,Victoria,Belgrave Walk,44.333333333333336
+360,Victoria,Mitcham,40.96666666666667
+361,Victoria,Mitcham Junction (Tramlink),38.166666666666664
+362,Victoria,Beddington Lane,42.35
+363,Victoria,Therapia Lane,42.95
+364,Victoria,Ampere Way,40.45
+365,Victoria,Arena,48.46666666666667
+366,Victoria,Elmers End (Tramlink),55.7
+367,Victoria,Harrington Road,47.46666666666667
+368,Victoria,Birkbeck (Tramlink),48.28333333333333
+369,Victoria,Avenue Road,47.166666666666664
+370,Victoria,Beckenham Road,42.56666666666667
+371,Victoria,Beckenham Junction (Tramlink),37.65
+372,Victoria,WOOLWICH ARSENAL - DLR,42.9
+373,Victoria,Penge West,38.766666666666666
+374,Victoria,Anerley,43.88333333333333
+375,Victoria,South Kenton,39.95
+376,Victoria,Wembley Central,44.35
+377,Victoria,Barking,47.233333333333334
+378,Victoria,Richmond,46.96666666666667
+379,Victoria,Becontree,56.85
+380,Victoria,Dagenham Heathway,58.46666666666667
+381,Victoria,Buckhurst Hill,49.38333333333333
+382,Victoria,Edgware,46.88333333333333
+383,Victoria,Cockfosters,50.9
+384,Victoria,Oakwood,46.8
+385,Victoria,Ruislip Gardens,54.56666666666667
+386,Victoria,South Ruislip,46.233333333333334
+387,Victoria,Northolt,43.53333333333333
+388,Victoria,Hounslow West,52.71666666666667
+389,Victoria,South Harrow,58.15
+390,Victoria,Harrow & Wealdstone,48.55
+391,Victoria,High Barnet,49.03333333333333
+392,Victoria,Eastcote,55.516666666666666
+393,Victoria,West Harrow,47.85
+394,Victoria,Rayners Lane,50.05
+395,Victoria,North Harrow,47.03333333333333
+396,Victoria,Pinner,49.25
+397,Victoria,Harrow-on-the-Hill,38.85
+398,Victoria,Stanmore,42.95
+399,Victoria,Canons Park,40.31666666666667
+400,Victoria,Dagenham East,60.78333333333333
+401,Victoria,West Croydon,37.55
+402,Victoria,Bush Hill Park,61.86666666666667
+403,Victoria,Chingford,49.43333333333333
+404,Victoria,Enfield Town,55.88333333333333
+405,Victoria,Southbury,48.333333333333336
+406,Victoria,Headstone Lane,50.55
+407,Victoria,Chadwell Heath,53.45
+408,Victoria,Waddon Marsh,52.75
+409,Victoria,Wandle Park,40.25
+410,Victoria,Reeves Corner,36.46666666666667
+411,Victoria,Centrale,38.266666666666666
+412,Victoria,West Croydon (Tramlink),35.88333333333333
+413,Victoria,Wellesley Road,31.6
+414,Victoria,Church Street,36.46666666666667
+415,Victoria,George Street,34.38333333333333
+416,Victoria,East Croydon (Tramlink),30.666666666666668
+417,Victoria,Lebanon Road,33.28333333333333
+418,Victoria,Sandilands,33.81666666666667
+419,Victoria,Lloyd Park,43.36666666666667
+420,Victoria,Coombe Lane,42.56666666666667
+421,Victoria,Addiscombe,38.2
+422,Victoria,Blackhorse Lane,41.93333333333333
+423,Victoria,Woodside,42.15
+424,Victoria,Harrow & Wealdstone,43.88333333333333
+425,Victoria,Loughton,53.8
+426,Victoria,Debden,60.233333333333334
+427,Victoria,Theydon Bois,60.38333333333333
+428,Victoria,Epping,63.93333333333333
+429,Victoria,Elm Park,64.9
+430,Victoria,Hornchurch,66.13333333333334
+431,Victoria,Heathrow Terminals 1-2-3,44.38333333333333
+432,Victoria,Upminster Bridge,68.35
+433,Victoria,West Ruislip,54.53333333333333
+434,Victoria,Upminster,61.03333333333333
+435,Victoria,Hatton Cross,54.18333333333333
+436,Victoria,Northwood,54.35
+437,Victoria,Heathrow Terminal 5,47.85
+438,Victoria,Heathrow Terminal 4,74.2
+439,Victoria,Uxbridge,61.43333333333333
+440,Victoria,Hillingdon,54.45
+441,Victoria,Ickenham,51.63333333333333
+442,Victoria,Ruislip,52.68333333333333
+443,Victoria,Ruislip Manor,49.85
+444,Victoria,Northwood Hills,54.75
+445,Victoria,Emerson Park,79.18333333333334
+446,Victoria,Romford,55.28333333333333
+447,Victoria,Turkey Street,49.916666666666664
+448,Victoria,Upminster,59.9
+449,Victoria,Hatch End,56.63333333333333
+450,Victoria,Romford,56.11666666666667
+451,Victoria,Gidea Park,63.95
+452,Victoria,Harold Wood,67.33333333333333
+453,Victoria,Gravel Hill,48.4
+454,Victoria,Addington Village,48.25
+455,Victoria,New Addington,53.483333333333334
+456,Victoria,King Henry's Drive,52.416666666666664
+457,Victoria,Fieldway,50.21666666666667
+458,Victoria,Chorleywood,56.71666666666667
+459,Victoria,Rickmansworth,52.71666666666667
+460,Victoria,Moor Park,59.03333333333333
+461,Victoria,Croxley,69.63333333333334
+462,Victoria,Watford,62.766666666666666
+463,Victoria,Theobalds Grove,52.0
+464,Victoria,Carpenders Park,55.88333333333333
+465,Victoria,Chalfont & Latimer,61.083333333333336
+466,Victoria,Cheshunt,51.96666666666667
+467,Victoria,Watford High Street,50.75
+468,Victoria,Watford Junction,48.96666666666667
+469,Victoria,Bushey,54.333333333333336
+470,Victoria,Chesham,88.68333333333334
+471,Victoria,Amersham,65.21666666666667
+472,Victoria,Clapton,43.35
+473,Victoria,Crystal Palace,45.583333333333336
+474,Victoria,Brentwood,70.26666666666667
+475,Victoria,Shenfield,63.53333333333333
+476,Victoria,Woodgrange Park,54.81666666666667
+477,Victoria,Willesden Junction,41.06666666666667
+0,Eastcote,Temple,54.53333333333333
+1,Eastcote,Blackfriars,56.86666666666667
+2,Eastcote,Mansion House,59.78333333333333
+3,Eastcote,Cannon Street,60.3
+4,Eastcote,Monument,60.21666666666667
+5,Eastcote,Tower Hill,63.45
+6,Eastcote,Aldgate,58.65
+7,Eastcote,Liverpool Street,57.18333333333333
+8,Eastcote,Moorgate,55.95
+9,Eastcote,Barbican,44.266666666666666
+10,Eastcote,Farringdon,42.9
+11,Eastcote,King's Cross St. Pancras,40.53333333333333
+12,Eastcote,Euston Square,39.88333333333333
+13,Eastcote,Great Portland Street,36.1
+14,Eastcote,Baker Street,32.28333333333333
+15,Eastcote,Edgware Road (Circle Line),37.65
+16,Eastcote,Paddington,43.55
+17,Eastcote,Bayswater,45.8
+18,Eastcote,High Street Kensington,52.3
+19,Eastcote,Gloucester Road,48.68333333333333
+20,Eastcote,South Kensington,52.81666666666667
+21,Eastcote,Victoria,44.35
+22,Eastcote,Pimlico,45.516666666666666
+23,Eastcote,Warren Street,39.4
+24,Eastcote,Queensway,45.86666666666667
+25,Eastcote,Hyde Park Corner,46.4
+26,Eastcote,Knightsbridge,48.11666666666667
+27,Eastcote,Leicester Square,46.18333333333333
+28,Eastcote,Covent Garden,48.21666666666667
+29,Eastcote,Russell Square,47.88333333333333
+30,Eastcote,Earl's Court,52.8
+31,Eastcote,Notting Hill Gate,57.13333333333333
+32,Eastcote,Lancaster Gate,54.766666666666666
+33,Eastcote,Marble Arch,49.61666666666667
+34,Eastcote,Bond Street,45.86666666666667
+35,Eastcote,Bank,58.083333333333336
+36,Eastcote,Oxford Circus,48.583333333333336
+37,Eastcote,Holborn,52.75
+38,Eastcote,Chancery Lane,54.36666666666667
+39,Eastcote,St. Paul's,56.96666666666667
+40,Eastcote,Paddington,49.983333333333334
+41,Eastcote,Embankment,46.38333333333333
+42,Eastcote,Westminster,42.21666666666667
+43,Eastcote,Euston,40.9
+44,Eastcote,Waterloo,39.9
+45,Eastcote,Green Park,44.75
+46,Eastcote,Paddington (H&C Line),37.86666666666667
+47,Eastcote,Piccadilly Circus,44.916666666666664
+48,Eastcote,Charing Cross,43.61666666666667
+49,Eastcote,Lambeth North,49.983333333333334
+50,Eastcote,Edgware Road (Bakerloo),36.86666666666667
+51,Eastcote,Marylebone,36.8
+52,Eastcote,Regent's Park,37.55
+53,Eastcote,Sloane Square,49.65
+54,Eastcote,St. James's Park,45.083333333333336
+55,Eastcote,Goodge Street,44.95
+56,Eastcote,Tottenham Court Road,44.18333333333333
+57,Eastcote,Borough,51.5
+58,Eastcote,Old Street,51.86666666666667
+59,Eastcote,Angel,48.766666666666666
+60,Eastcote,Shoreditch High Street,56.28333333333333
+61,Eastcote,Aldgate East,55.11666666666667
+62,Eastcote,Southwark,45.483333333333334
+63,Eastcote,London Bridge,47.75
+64,Eastcote,Liverpool Street,56.18333333333333
+65,Eastcote,Liverpool Street,57.35
+66,Eastcote,TOWER GATEWAY - DLR,63.88333333333333
+67,Eastcote,BANK - DLR,58.0
+68,Eastcote,Euston,47.28333333333333
+69,Eastcote,East Putney,62.583333333333336
+70,Eastcote,Putney Bridge,60.61666666666667
+71,Eastcote,Parsons Green,57.666666666666664
+72,Eastcote,White City,55.46666666666667
+73,Eastcote,Shepherd's Bush,60.75
+74,Eastcote,Holland Park,50.166666666666664
+75,Eastcote,Brixton,51.8
+76,Eastcote,Vauxhall,42.9
+77,Eastcote,Highbury & Islington,48.93333333333333
+78,Eastcote,Caledonian Road,50.03333333333333
+79,Eastcote,Holloway Road,51.28333333333333
+80,Eastcote,Arsenal,51.36666666666667
+81,Eastcote,Manor House,51.13333333333333
+82,Eastcote,Shepherd's Bush Market,49.96666666666667
+83,Eastcote,Goldhawk Road,51.03333333333333
+84,Eastcote,Latimer Road,50.166666666666664
+85,Eastcote,Ladbroke Grove,45.25
+86,Eastcote,Royal Oak,48.06666666666667
+87,Eastcote,Westbourne Park,46.11666666666667
+88,Eastcote,Queen's Park,47.46666666666667
+89,Eastcote,Mile End,56.81666666666667
+90,Eastcote,Bethnal Green,56.0
+91,Eastcote,Rotherhithe,54.233333333333334
+92,Eastcote,Kensington (Olympia),53.45
+93,Eastcote,Finsbury Park,48.05
+94,Eastcote,Stockwell,57.4
+95,Eastcote,Hammersmith (H&C Line),47.4
+96,Eastcote,Kensal Green,56.583333333333336
+97,Eastcote,Elephant & Castle,60.96666666666667
+98,Eastcote,Warwick Avenue,49.93333333333333
+99,Eastcote,Maida Vale,51.86666666666667
+100,Eastcote,Kilburn Park,52.833333333333336
+101,Eastcote,Ravenscourt Park,50.65
+102,Eastcote,Hammersmith (Dist&Picc Line),46.78333333333333
+103,Eastcote,Kilburn,35.5
+104,Eastcote,West Hampstead,29.9
+105,Eastcote,Swiss Cottage,31.7
+106,Eastcote,Finchley Road,25.716666666666665
+107,Eastcote,Archway,48.11666666666667
+108,Eastcote,Clapham South,55.333333333333336
+109,Eastcote,Clapham Common,53.416666666666664
+110,Eastcote,Clapham North,51.28333333333333
+111,Eastcote,Belsize Park,44.21666666666667
+112,Eastcote,Hampstead,45.416666666666664
+113,Eastcote,Mornington Crescent,47.6
+114,Eastcote,Chalk Farm,47.833333333333336
+115,Eastcote,Camden Town,47.7
+116,Eastcote,Kentish Town,40.583333333333336
+117,Eastcote,Tufnell Park,48.95
+118,Eastcote,Oval,52.583333333333336
+119,Eastcote,Kennington,52.21666666666667
+120,Eastcote,East Acton,46.61666666666667
+121,Eastcote,Wood Lane,50.75
+122,Eastcote,Canada Water,51.31666666666667
+123,Eastcote,Shadwell,58.1
+124,Eastcote,Whitechapel,54.28333333333333
+125,Eastcote,Hoxton,60.983333333333334
+126,Eastcote,Haggerston,56.166666666666664
+127,Eastcote,Dalston Junction,61.85
+128,Eastcote,New Cross,66.91666666666667
+129,Eastcote,Brockley,70.73333333333333
+130,Eastcote,West Kensington,54.833333333333336
+131,Eastcote,Barons Court,47.6
+132,Eastcote,Fulham Broadway,55.8
+133,Eastcote,West Brompton,56.31666666666667
+134,Eastcote,Stamford Brook,53.78333333333333
+135,Eastcote,Stepney Green,66.06666666666666
+136,Eastcote,Whitechapel,63.1
+137,Eastcote,Bow Road,67.96666666666667
+138,Eastcote,St. John's Wood,31.933333333333334
+139,Eastcote,Canada Water,51.78333333333333
+140,Eastcote,Bermondsey,49.93333333333333
+141,Eastcote,Canary Wharf,53.483333333333334
+142,Eastcote,Bethnal Green,54.9
+143,Eastcote,Cambridge Heath,61.9
+144,Eastcote,Clapham High Street,51.416666666666664
+145,Eastcote,Denmark Hill,69.25
+146,Eastcote,Hackney Downs,59.28333333333333
+147,Eastcote,London Fields,64.83333333333333
+148,Eastcote,Peckham Rye,63.483333333333334
+149,Eastcote,Queens Road Peckham,60.4
+150,Eastcote,Rectory Road,68.9
+151,Eastcote,Wandsworth Road,60.0
+152,Eastcote,Stoke Newington,66.75
+153,Eastcote,Brondesbury,37.0
+154,Eastcote,Brondesbury Park,39.166666666666664
+155,Eastcote,Caledonian Road & Barnsbury,48.86666666666667
+156,Eastcote,Camden Road,44.483333333333334
+157,Eastcote,Canonbury,62.25
+158,Eastcote,Dalston Kingsland,63.25
+159,Eastcote,Finchley Road & Frognal,38.13333333333333
+160,Eastcote,Gospel Oak,48.833333333333336
+161,Eastcote,Hackney Central,68.58333333333333
+162,Eastcote,Hackney Wick,73.18333333333334
+163,Eastcote,Hampstead Heath,47.483333333333334
+164,Eastcote,Homerton,70.33333333333333
+165,Eastcote,Kensal Green,56.13333333333333
+166,Eastcote,Kensal Rise,47.88333333333333
+167,Eastcote,Kentish Town West,52.7
+168,Eastcote,Kilburn High Road,39.666666666666664
+169,Eastcote,New Cross Gate,63.05
+170,Eastcote,ALL SAINTS - DLR,66.28333333333333
+171,Eastcote,BLACKWALL - DLR,65.65
+172,Eastcote,BOW CHURCH - DLR,64.65
+173,Eastcote,CANARY WHARF - DLR,53.9
+174,Eastcote,CROSSHARBOUR - DLR,66.98333333333333
+175,Eastcote,CUTTY SARK - DLR,69.96666666666667
+176,Eastcote,DEPTFORD BRIDGE - DLR,70.13333333333334
+177,Eastcote,DEVONS ROAD - DLR,69.93333333333334
+178,Eastcote,ELVERSON ROAD - DLR,67.71666666666667
+179,Eastcote,HERON QUAYS - DLR,53.516666666666666
+180,Eastcote,ISLAND GARDENS - DLR,67.5
+181,Eastcote,LANGDON PARK - DLR,69.01666666666667
+182,Eastcote,LEWISHAM - DLR,64.4
+183,Eastcote,LIMEHOUSE - DLR,60.15
+184,Eastcote,MUDCHUTE - DLR,66.91666666666667
+185,Eastcote,POPLAR - DLR,58.4
+186,Eastcote,SHADWELL - DLR,57.11666666666667
+187,Eastcote,SOUTH QUAY - DLR,68.05
+188,Eastcote,WEST INDIA QUAY - DLR,67.18333333333334
+189,Eastcote,WESTFERRY - DLR,67.15
+190,Eastcote,South Hampstead,41.61666666666667
+191,Eastcote,Surrey Quays,63.96666666666667
+192,Eastcote,Upper Holloway,59.35
+193,Eastcote,Wapping,65.46666666666667
+194,Eastcote,West Hampstead,36.916666666666664
+195,Eastcote,Shepherds Bush,57.56666666666667
+196,Eastcote,Kensington Olympia,61.583333333333336
+197,Eastcote,Westompton,53.43333333333333
+198,Eastcote,Clapham Junction,58.05
+199,Eastcote,Imperial Wharf,60.85
+200,Eastcote,Queens Park,48.81666666666667
+201,Eastcote,Highbury & Islington,47.63333333333333
+202,Eastcote,Chiswick Park,43.8
+203,Eastcote,Wimbledon Park,64.5
+204,Eastcote,Southfields,60.18333333333333
+205,Eastcote,Seven Sisters,52.93333333333333
+206,Eastcote,Blackhorse Road,56.13333333333333
+207,Eastcote,Tottenham Hale,56.96666666666667
+208,Eastcote,Brent Cross,51.6
+209,Eastcote,Golders Green,46.266666666666666
+210,Eastcote,South Ealing,40.21666666666667
+211,Eastcote,North Ealing,31.066666666666666
+212,Eastcote,Park Royal,29.016666666666666
+213,Eastcote,Hanger Lane,33.65
+214,Eastcote,North Acton,43.9
+215,Eastcote,Leyton,64.2
+216,Eastcote,Bromley-by-Bow,67.76666666666667
+217,Eastcote,Plaistow,75.55
+218,Eastcote,Upton Park,77.56666666666666
+219,Eastcote,Turnpike Lane,62.9
+220,Eastcote,Wood Green,64.93333333333334
+221,Eastcote,Bounds Green,67.68333333333334
+222,Eastcote,West Ham,69.03333333333333
+223,Eastcote,Walthamstow Central,64.71666666666667
+224,Eastcote,Ealing Broadway,42.8
+225,Eastcote,Acton Town,41.06666666666667
+226,Eastcote,Ealing Common,33.916666666666664
+227,Eastcote,South Wimbledon,65.23333333333333
+228,Eastcote,Northfields,43.93333333333333
+229,Eastcote,Harlesden,46.65
+230,Eastcote,Kew Gardens,55.75
+231,Eastcote,Gunnersbury,51.083333333333336
+232,Eastcote,North Greenwich,56.733333333333334
+233,Eastcote,Canning Town,59.166666666666664
+234,Eastcote,Willesden Green,33.71666666666667
+235,Eastcote,Colliers Wood,63.233333333333334
+236,Eastcote,Tooting Broadway,60.016666666666666
+237,Eastcote,Tooting Bec,58.56666666666667
+238,Eastcote,Balham,55.68333333333333
+239,Eastcote,Hendon Central,53.8
+240,Eastcote,Wimbledon,65.08333333333333
+241,Eastcote,Honor Oak Park,67.45
+242,Eastcote,Forest Hill,74.73333333333333
+243,Eastcote,Sydenham,77.93333333333334
+244,Eastcote,Turnham Green,55.9
+245,Eastcote,Neasden,29.733333333333334
+246,Eastcote,Dollis Hill,32.733333333333334
+247,Eastcote,Stonebridge Park,47.45
+248,Eastcote,Willesden Junction,53.28333333333333
+249,Eastcote,East Finchley,61.15
+250,Eastcote,Highgate,58.0
+251,Eastcote,West Acton,38.916666666666664
+252,Eastcote,Stratford,58.233333333333334
+253,Eastcote,Bruce Grove,63.2
+254,Eastcote,Seven Sisters,52.983333333333334
+255,Eastcote,Walthamstow St James Street,64.7
+256,Eastcote,White Hart Lane,67.33333333333333
+257,Eastcote,Stamford Hill,61.11666666666667
+258,Eastcote,Acton Central,45.95
+259,Eastcote,Blackhorse Road,56.36666666666667
+260,Eastcote,Crouch Hill,48.166666666666664
+261,Eastcote,Harlesden,49.1
+262,Eastcote,Harringay Green Lanes,51.3
+263,Eastcote,Kew Gardens,55.3
+264,Eastcote,Leyton Midland Road,63.65
+265,Eastcote,Leytonstone High Road,66.01666666666667
+266,Eastcote,Stratford,57.71666666666667
+267,Eastcote,Maryland,69.43333333333334
+268,Eastcote,Forest Gate,71.8
+269,Eastcote,Wimbledon (Tramlink),73.4
+270,Eastcote,Dundonald Road,74.5
+271,Eastcote,Merton Park,76.56666666666666
+272,Eastcote,BECKTON - DLR,86.31666666666666
+273,Eastcote,BECKTON PARK - DLR,78.78333333333333
+274,Eastcote,CUSTOM HOUSE - DLR,64.98333333333333
+275,Eastcote,CYPRUS - DLR,75.73333333333333
+276,Eastcote,GALLIONS REACH - DLR,74.16666666666667
+277,Eastcote,KING GEORGE V - DLR,71.9
+278,Eastcote,LONDON CITY AIRPORT - DLR,71.51666666666667
+279,Eastcote,PONTOON DOCK - DLR,69.35
+280,Eastcote,PRINCE REGENT - DLR,68.51666666666667
+281,Eastcote,ROYAL ALBERT - DLR,69.75
+282,Eastcote,ROYAL VICTORIA - DLR,65.26666666666667
+283,Eastcote,WEST SILVERTOWN - DLR,67.36666666666666
+284,Eastcote,CANNING TOWN - DLR,59.38333333333333
+285,Eastcote,EAST INDIA - DLR,64.7
+286,Eastcote,GREENWICH - DLR,70.7
+287,Eastcote,PUDDING MILL LANE - DLR,64.93333333333334
+288,Eastcote,WEST HAM - DLR,62.15
+289,Eastcote,STRATFORD - DLR,58.5
+290,Eastcote,STAR LANE - DLR,66.2
+291,Eastcote,ABBEY ROAD - DLR,66.11666666666666
+292,Eastcote,STRATFORD HIGH STREET - DLR,63.78333333333333
+293,Eastcote,STRATFORD INTERNATIONAL - DLR,61.35
+294,Eastcote,South Acton,49.333333333333336
+295,Eastcote,South Tottenham,65.15
+296,Eastcote,Stonebridge Park,52.03333333333333
+297,Eastcote,Walthamstow Queens Road,70.03333333333333
+298,Eastcote,Wanstead Park,72.76666666666667
+299,Eastcote,Gunnersbury,54.13333333333333
+300,Eastcote,Stratford,65.78333333333333
+301,Eastcote,Hainault,95.08333333333333
+302,Eastcote,Grange Hill,99.11666666666666
+303,Eastcote,Colindale,47.78333333333333
+304,Eastcote,Burnt Oak,53.71666666666667
+305,Eastcote,Mill Hill East,68.65
+306,Eastcote,Finchley Central,70.35
+307,Eastcote,Sudbury Hill,24.383333333333333
+308,Eastcote,Sudbury Town,25.616666666666667
+309,Eastcote,Alperton,25.65
+310,Eastcote,Arnos Grove,61.86666666666667
+311,Eastcote,Southgate,64.0
+312,Eastcote,Perivale,40.0
+313,Eastcote,Greenford,33.483333333333334
+314,Eastcote,Snaresbrook,73.45
+315,Eastcote,Leytonstone,66.98333333333333
+316,Eastcote,Wanstead,69.91666666666667
+317,Eastcote,Redbridge,70.51666666666667
+318,Eastcote,Gants Hill,70.85
+319,Eastcote,South Woodford,75.01666666666667
+320,Eastcote,Newbury Park,74.8
+321,Eastcote,Barkingside,82.66666666666667
+322,Eastcote,Fairlop,79.53333333333333
+323,Eastcote,Woodford,78.46666666666667
+324,Eastcote,Roding Valley,89.13333333333334
+325,Eastcote,Chigwell,96.65
+326,Eastcote,East Ham,74.7
+327,Eastcote,Upney,80.35
+328,Eastcote,Barking,70.9
+329,Eastcote,Morden,67.41666666666667
+330,Eastcote,Hounslow Central,57.86666666666667
+331,Eastcote,Hounslow East,56.06666666666667
+332,Eastcote,Osterley,55.483333333333334
+333,Eastcote,Boston Manor,50.3
+334,Eastcote,Wembley Central,40.38333333333333
+335,Eastcote,North Wembley,43.6
+336,Eastcote,Richmond,77.28333333333333
+337,Eastcote,Preston Road,26.5
+338,Eastcote,Wembley Park,27.683333333333334
+339,Eastcote,Kingsbury,38.88333333333333
+340,Eastcote,Queensbury,37.1
+341,Eastcote,South Kenton,39.233333333333334
+342,Eastcote,Kenton,31.95
+343,Eastcote,Woodside Park,69.36666666666666
+344,Eastcote,West Finchley,66.15
+345,Eastcote,Totteridge & Whetstone,71.58333333333333
+346,Eastcote,Northwick Park,23.3
+347,Eastcote,Norwood Junction,64.18333333333334
+348,Eastcote,Edmondton Green,74.33333333333333
+349,Eastcote,Highams Park,72.93333333333334
+350,Eastcote,Walthamstow Wood Street,69.76666666666667
+351,Eastcote,Silver Street,71.93333333333334
+352,Eastcote,Kenton,32.233333333333334
+353,Eastcote,North Wembley,37.15
+354,Eastcote,Manor Park,65.85
+355,Eastcote,Ilford,72.18333333333334
+356,Eastcote,Seven Kings,70.85
+357,Eastcote,Goodmayes,80.35
+358,Eastcote,Morden Road,73.43333333333334
+359,Eastcote,Phipps Bridge,76.56666666666666
+360,Eastcote,Belgrave Walk,84.3
+361,Eastcote,Mitcham,77.98333333333333
+362,Eastcote,Mitcham Junction (Tramlink),87.48333333333333
+363,Eastcote,Beddington Lane,87.33333333333333
+364,Eastcote,Therapia Lane,88.01666666666667
+365,Eastcote,Ampere Way,85.5
+366,Eastcote,Arena,93.51666666666667
+367,Eastcote,Elmers End (Tramlink),95.81666666666666
+368,Eastcote,Harrington Road,97.51666666666667
+369,Eastcote,Birkbeck (Tramlink),90.35
+370,Eastcote,Avenue Road,90.0
+371,Eastcote,Beckenham Road,87.61666666666666
+372,Eastcote,Beckenham Junction (Tramlink),82.71666666666667
+373,Eastcote,WOOLWICH ARSENAL - DLR,71.43333333333334
+374,Eastcote,Penge West,76.25
+375,Eastcote,Anerley,73.96666666666667
+376,Eastcote,South Kenton,38.81666666666667
+377,Eastcote,Wembley Central,37.7
+378,Eastcote,Barking,72.31666666666666
+379,Eastcote,Richmond,69.06666666666666
+380,Eastcote,Becontree,84.95
+381,Eastcote,Dagenham Heathway,86.58333333333333
+382,Eastcote,Buckhurst Hill,80.5
+383,Eastcote,Edgware,54.88333333333333
+384,Eastcote,Cockfosters,75.05
+385,Eastcote,Oakwood,68.95
+386,Eastcote,Ruislip Gardens,26.55
+387,Eastcote,South Ruislip,25.833333333333332
+388,Eastcote,Northolt,25.933333333333334
+389,Eastcote,Hounslow West,56.93333333333333
+390,Eastcote,South Harrow,16.366666666666667
+391,Eastcote,Harrow & Wealdstone,28.783333333333335
+392,Eastcote,High Barnet,75.28333333333333
+393,Eastcote,West Harrow,12.516666666666667
+394,Eastcote,Rayners Lane,8.316666666666666
+395,Eastcote,North Harrow,21.316666666666666
+396,Eastcote,Pinner,23.533333333333335
+397,Eastcote,Harrow-on-the-Hill,15.15
+398,Eastcote,Stanmore,39.266666666666666
+399,Eastcote,Canons Park,37.65
+400,Eastcote,Dagenham East,95.11666666666666
+401,Eastcote,West Croydon,80.9
+402,Eastcote,Bush Hill Park,90.96666666666667
+403,Eastcote,Chingford,93.78333333333333
+404,Eastcote,Enfield Town,90.35
+405,Eastcote,Southbury,77.7
+406,Eastcote,Headstone Lane,33.7
+407,Eastcote,Chadwell Heath,85.85
+408,Eastcote,Waddon Marsh,96.13333333333334
+409,Eastcote,Wandle Park,84.71666666666667
+410,Eastcote,Reeves Corner,80.93333333333334
+411,Eastcote,Centrale,78.71666666666667
+412,Eastcote,West Croydon (Tramlink),76.33333333333333
+413,Eastcote,Wellesley Road,72.03333333333333
+414,Eastcote,Church Street,76.9
+415,Eastcote,George Street,74.81666666666666
+416,Eastcote,East Croydon (Tramlink),71.13333333333334
+417,Eastcote,Lebanon Road,77.1
+418,Eastcote,Sandilands,77.73333333333333
+419,Eastcote,Lloyd Park,88.9
+420,Eastcote,Coombe Lane,88.05
+421,Eastcote,Addiscombe,81.71666666666667
+422,Eastcote,Blackhorse Lane,84.48333333333333
+423,Eastcote,Woodside,81.68333333333334
+424,Eastcote,Harrow & Wealdstone,28.683333333333334
+425,Eastcote,Loughton,86.31666666666666
+426,Eastcote,Debden,95.76666666666667
+427,Eastcote,Theydon Bois,96.91666666666667
+428,Eastcote,Epping,100.41666666666667
+429,Eastcote,Elm Park,91.45
+430,Eastcote,Hornchurch,92.7
+431,Eastcote,Heathrow Terminals 1-2-3,53.88333333333333
+432,Eastcote,Upminster Bridge,89.9
+433,Eastcote,West Ruislip,30.016666666666666
+434,Eastcote,Upminster,89.6
+435,Eastcote,Hatton Cross,61.766666666666666
+436,Eastcote,Northwood,27.95
+437,Eastcote,Heathrow Terminal 5,61.93333333333333
+438,Eastcote,Heathrow Terminal 4,85.78333333333333
+439,Eastcote,Uxbridge,27.05
+440,Eastcote,Hillingdon,21.083333333333332
+441,Eastcote,Ickenham,18.266666666666666
+442,Eastcote,Ruislip,19.333333333333332
+443,Eastcote,Ruislip Manor,16.516666666666666
+444,Eastcote,Northwood Hills,23.133333333333333
+445,Eastcote,Emerson Park,110.55
+446,Eastcote,Romford,87.96666666666667
+447,Eastcote,Turkey Street,79.6
+448,Eastcote,Upminster,89.6
+449,Eastcote,Hatch End,37.31666666666667
+450,Eastcote,Romford,79.78333333333333
+451,Eastcote,Gidea Park,83.71666666666667
+452,Eastcote,Harold Wood,87.11666666666666
+453,Eastcote,Gravel Hill,94.2
+454,Eastcote,Addington Village,94.26666666666667
+455,Eastcote,New Addington,98.31666666666666
+456,Eastcote,King Henry's Drive,97.28333333333333
+457,Eastcote,Fieldway,95.1
+458,Eastcote,Chorleywood,38.61666666666667
+459,Eastcote,Rickmansworth,36.63333333333333
+460,Eastcote,Moor Park,33.95
+461,Eastcote,Croxley,41.56666666666667
+462,Eastcote,Watford,45.21666666666667
+463,Eastcote,Theobalds Grove,81.95
+464,Eastcote,Carpenders Park,55.833333333333336
+465,Eastcote,Chalfont & Latimer,43.016666666666666
+466,Eastcote,Cheshunt,72.93333333333334
+467,Eastcote,Watford High Street,61.733333333333334
+468,Eastcote,Watford Junction,64.93333333333334
+469,Eastcote,Bushey,56.3
+470,Eastcote,Chesham,63.666666666666664
+471,Eastcote,Amersham,57.2
+472,Eastcote,Clapton,62.71666666666667
+473,Eastcote,Crystal Palace,80.45
+474,Eastcote,Brentwood,91.28333333333333
+475,Eastcote,Shenfield,75.56666666666666
+476,Eastcote,Woodgrange Park,73.85
+477,Eastcote,Willesden Junction,53.11666666666667
