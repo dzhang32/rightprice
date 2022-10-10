@@ -25,6 +25,7 @@ def get_min_route_duration_to_stations_of_interest(
     stations_of_interest: List[str], station_coords_df: pd.DataFrame, cm_api_key: str
 ) -> pd.DataFrame:
 
+    # city mapper API expects strings
     station_coords_df["x"] = station_coords_df["x"].astype(str)
     station_coords_df["y"] = station_coords_df["y"].astype(str)
 
@@ -44,10 +45,10 @@ def get_min_route_duration_to_stations_of_interest(
 
             min_route_duration.append(
                 get_min_route_duration(
-                    cm_api_key=os.environ.get("CM_API_KEY"),
+                    cm_api_key=cm_api_key,
                     coords_a=[soi_df["y"].values[0], soi_df["x"].values[0]],
                     coords_b=[station.y, station.x],
-                    date_time=get_next_tuesday_iso(8),
+                    date_time=get_next_tuesday_iso(hour=8),
                 )
             )
 
@@ -95,6 +96,7 @@ def get_min_route_duration(cm_api_key: str, coords_a: List[float], coords_b: Lis
     attempt = 0
     min_transit_duration = None
 
+    # try 2 times as API is sometimes flaky
     while attempt < 2 and min_transit_duration is None:
         try:
             attempt += 1
