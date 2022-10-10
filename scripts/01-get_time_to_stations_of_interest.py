@@ -24,6 +24,26 @@ def main(station_coords_path: str, output_path: str) -> None:
 def get_min_route_duration_to_stations_of_interest(
     stations_of_interest: List[str], station_coords_df: pd.DataFrame, cm_api_key: str
 ) -> pd.DataFrame:
+    """Obtain the time of the fastest routes to stations of interest.
+
+    To a set of stations of interest, find the fastest routes from any other
+    station.
+
+    Parameters
+    ----------
+    stations_of_interest : List[str]
+        names of the stations of interest.
+    station_coords_df : pd.DataFrame
+        contains the coords of all stations.
+    cm_api_key : str
+        CityMapper API key.
+
+    Returns
+    -------
+    pd.DataFrame
+        contains the duration of the fastest routes to each station of interest
+        in minutes.
+    """
 
     # city mapper API expects strings
     station_coords_df["x"] = station_coords_df["x"].astype(str)
@@ -43,6 +63,8 @@ def get_min_route_duration_to_stations_of_interest(
             if station.NAME == soi:
                 continue
 
+            # the duration of each route is based on next tuesday at 8am
+            # next being the following tuesday from when this script is run
             min_route_duration.append(
                 get_min_route_duration(
                     cm_api_key=cm_api_key,
@@ -66,7 +88,18 @@ def get_min_route_duration_to_stations_of_interest(
 
 
 def get_next_tuesday_iso(hour: int) -> str:
+    """Obtain the date of next Tuesday in an ISO 8601 format.
 
+    Parameters
+    ----------
+    hour : int
+        the hour to be set in the returned date.
+
+    Returns
+    -------
+    str
+        date and time of next Tuesday in an ISO 8601 format.
+    """
     today = datetime.datetime.today().replace(hour=hour, minute=00)
 
     # weekday() returns a int specifying the day e.g. Mon = 0, Tues = 1 etc
@@ -84,8 +117,25 @@ def get_next_tuesday_iso(hour: int) -> str:
     return next_tues_iso
 
 
-def get_min_route_duration(cm_api_key: str, coords_a: List[float], coords_b: List[float], date_time: str) -> float:
+def get_min_route_duration(cm_api_key: str, coords_a: List[str], coords_b: List[str], date_time: str) -> float:
+    """Obtain the duration of the fastest route between two places.
 
+    Parameters
+    ----------
+    cm_api_key : str
+        CityMapper API key.
+    coords_a : List[str]
+        coordinates of first place of interest.
+    coords_b : List[str]
+        coordinates of second place of interest.
+    date_time : str
+        the date and time on which to calculate the route durations.
+
+    Returns
+    -------
+    float
+        duration of the fastest route between the two places in minutes.
+    """
     headers = {"Citymapper-Partner-Key": cm_api_key}
     params = {
         "start": ",".join(coords_a),
