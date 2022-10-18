@@ -161,4 +161,4 @@ def get_min_route_duration(cm_api_key: str, coords_a: List[str], coords_b: List[
 
 
 if __name__ == "__main__":
-    main("data/raw/london_stations_coords.csv", "data/processed/soi_min_route_duration.csv")
+    main(station_coords_path="data/raw/london_stations_coords.csv", output_path="data/processed/soi_min_route_duration.csv")
