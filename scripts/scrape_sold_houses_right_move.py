@@ -116,7 +116,11 @@ def extract_dates_prices(property_card):
         if i % 2 == 0:
             dates.append(p.text)
         else:
-            prices.append(int(p.text[1:].replace(",", "")))
+            if p.text[0] == "£":
+                prices.append(int(p.text[1:].replace(",", "")))
+            else:
+                print(p.text)
+                prices.append("")
 
     return dates, prices
 
