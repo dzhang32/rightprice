@@ -1,0 +1,146 @@
+---
+title: "03-analyse_right_move.Rmd"
+author: 
+- name: "David Zhang"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  bookdown::html_document2:
+    figure_caption: yes
+    code_folding: show
+    theme: spacelab
+    highlight: kate
+    df_print: paged
+    toc: true
+    toc_float: true
+    number_sections: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readr)
+library(dplyr)
+library(lubridate)
+library(here)
+library(ggplot2)
+library(ggbeeswarm)
+library(patchwork)
+
+theme_set(theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)))
+```
+
+# Load data
+
+```{r}
+right_move_data <- read_delim(here::here("data", "02-explore_right_move", "w3_9jj_0.5_mile_flat_sold.csv"), delim = ",") 
+right_move_data
+```
+# Tidy data
+
+```{r}
+right_move_data <- right_move_data %>% dplyr::mutate(date = lubridate::dmy(date))
+```
+
+# Analyse data
+
+```{r}
+right_move_data %>% 
+  group_by(address) %>% 
+  filter(date == max(date)) %>% 
+  group_by(property_type) %>% 
+  count()
+```
+
+
+```{r}
+
+type_by_price_box <- right_move_data %>% 
+  group_by(address) %>% 
+  filter(date == max(date)) %>% 
+  filter(date > today() - years(5)) %>% 
+  ggplot(aes(x = property_type, y = price)) +
+  geom_boxplot()
+
+type_by_price_freq <- right_move_data %>% 
+  group_by(address) %>% 
+  filter(date == max(date)) %>% 
+  filter(date > today() - years(5)) %>% 
+  ggplot(aes(price, colour = property_type)) +
+  geom_freqpoly()
+
+type_by_price_box / type_by_price_freq
+
+
+```
+
+```{r, fig.width=10}
+right_move_data %>% 
+  mutate(year = year(date)) %>% 
+  ggplot(aes(x = as.factor(year), y = price)) + 
+  geom_boxplot() +
+  facet_wrap(~ property_type)
+```
+
+```{r}
+right_move_data %>% 
+  dplyr::mutate(year = as.factor(year(date))) %>% 
+  group_by(year, property_type) %>% 
+  count() %>% 
+  ggplot(aes(year, n, colour=property_type)) +
+  geom_point() + 
+  facet_wrap(~ property_type)
+
+```
+
+```{r}
+right_move_data %>% 
+  group_by(address) %>% 
+  filter(date == max(date)) %>% 
+  ungroup() %>% 
+  filter(property_type == "Semi-Detached") %>% 
+  filter(date > (today() - years(2))) %>% 
+  ggplot(aes(x = price, y = as.factor(bedrooms))) + 
+  geom_boxplot()
+```
+
+
+```{r}
+
+right_move_data %>% 
+  group_by(address) %>% 
+  filter(date == max(date)) %>% 
+  ungroup() %>% 
+  filter(property_type == "Semi-Detached", bedrooms == 3) %>% 
+  filter(date > (today() - years(5))) %>% 
+  .[["price"]] %>% 
+  quantile(probs = seq(0.1, 1, by = 0.1), na.rm = TRUE)
+
+```
+
+```{r}
+
+right_move_data %>% 
+  group_by(address) %>% 
+  filter(date == max(date)) %>% 
+  ungroup() %>% 
+  filter(property_type == "Semi-Detached", bedrooms == 4) %>% 
+  filter(date > (today() - years(5))) %>% 
+  .[["price"]] %>% 
+  quantile(probs = seq(0.1, 1, by = 0.1), na.rm = TRUE)
+
+```
+
+```{r}
+
+right_move_data %>% 
+  group_by(address) %>% 
+  filter(date == max(date)) %>% 
+  ungroup() %>% 
+  filter(property_type == "Semi-Detached", bedrooms == 3) %>% 
+  filter(date > (today() - years(5))) %>% 
+  dplyr::arrange(desc(price)) 
+  
+
+```
+
