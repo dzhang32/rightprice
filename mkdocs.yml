@@ -1,0 +1,29 @@
+site_name: rightprice
+site_description: rightprice documentation
+site_author: David Zhang
+repo_url: https://github.com/dzhang32/rightprice
+repo_name: dzhang32/rightprice
+
+theme:
+  name: material
+  features:
+    # Organise top-level sections as tabs.
+    - navigation.tabs
+    # Enable search suggestions.
+    - search.suggest
+
+nav:
+  - Home: index.md
+  - API Reference: api.md
+  - Changelog: changelog.md
+
+plugins:
+  # Enable search.
+  - search
+  # Generate API reference from docstrings.
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_root_heading: true
