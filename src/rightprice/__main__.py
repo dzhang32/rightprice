@@ -1,6 +1,6 @@
 import click
 
-from rightprice.add_one import add_one_cli
+from rightprice.scrape_rightmove import scrape_rightmove_cli
 
 @click.group()
 def cli() -> None:
@@ -8,4 +8,4 @@ def cli() -> None:
 
 
 # Add subcommands.
-cli.add_command(add_one_cli)
+cli.add_command(scrape_rightmove_cli)
