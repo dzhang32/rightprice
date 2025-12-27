@@ -28,16 +28,12 @@ docs = [
     "mkdocstrings[python]==0.30.0",
 ]
 
-
 build = [
     "build==1.3.0",
 ]
 
-
-
 [project.scripts]
 rightprice = "rightprice.__main__:cli"
-
 
 [build-system]
 requires = ["hatchling"]
