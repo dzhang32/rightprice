@@ -1,9 +1,17 @@
 import re
 from pathlib import Path
 
-import pandas as pd
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, ResultSet, Tag
+from pydantic import BaseModel
+
+
+class House(BaseModel):
+    address: str
+    property_type: str | None
+    n_bedrooms: int | None
+    dates: list[str]
+    prices: list[int | None]
 
 
 class SoldPriceRetriever:
@@ -20,21 +28,20 @@ class SoldPriceRetriever:
         self.output_dir = output_dir
 
     def retrieve(self) -> None:
-        url = self._get_url()
-        soup = self._get_page(url) + "1"
+        url = self._get_url(1)
+        soup = self._get_page(url)
+        n_pages = self._extract_page_count(soup)
 
-        for page in range(self._extract_page_count(soup)):
-            url = self._get_url() + str(page + 1)
+        all_properties_info = []
+        for i in range(2):
+            url = self._get_url(i + 1)
             soup = self._get_page(url)
             properties_info = self._extract_property_info(soup)
             properties_info.append(properties_info)
 
-        properties_info = pd.concat(properties_info, ignore_index=True)
-        properties_info.to_csv(self.output_dir / f"{self.postcode}.csv", index=False)
-
-    def _get_url(self) -> str:
+    def _get_url(self, page_number: int) -> str:
         # TODO: Add more parameters.
-        return f"{self.BASE_URL}{self.postcode}.html?pageNumber="
+        return f"{self.BASE_URL}{self.postcode}.html?pageNumber={str(page_number)}"
 
     def _get_page(self, url: str) -> BeautifulSoup:
         response = requests.get(url, headers=self.HEADERS)
@@ -47,50 +54,29 @@ class SoldPriceRetriever:
         page_text = dropdown.find_all("span")[1].text
         return int(page_text.replace("of ", ""))
 
-    def _extract_property_info(self, soup: BeautifulSoup) -> pd.DataFrame:
+    def _extract_property_info(self, soup: BeautifulSoup) -> list[House]:
         property_cards = soup.find_all("a", attrs={"data-testid": "propertyCard"})
         properties_info = []
 
         for card in property_cards:
-            address = card.find("h3").text
-
-            property_type_div = card.find_all(
-                "div",
-                attrs={"aria-label": re.compile(r"property type:", re.IGNORECASE)},
-            )
-            property_type = (
-                property_type_div[0].text.replace("Property Type: ", "")
-                if property_type_div
-                else ""
-            )
-
-            bedrooms_div = card.find_all(
-                "div", attrs={"aria-label": re.compile(r"bedrooms", re.IGNORECASE)}
-            )
-            bedrooms = (
-                int(bedrooms_div[0].text.replace("Bedrooms: ", ""))
-                if bedrooms_div
-                else pd.NA
-            )
-
             dates, prices = self._extract_dates_prices(card)
 
-            property_info = pd.DataFrame(
-                {
-                    "property_type": property_type,
-                    "address": address,
-                    "date": dates,
-                    "price": prices,
-                    "bedrooms": bedrooms,
-                }
+            property_info = House(
+                address=self._get_address(card),
+                property_type=self._get_property_type(card),
+                n_bedrooms=self._get_bedrooms(card),
+                dates=dates,
+                prices=prices,
             )
+
             properties_info.append(property_info)
 
-        return pd.concat(properties_info, ignore_index=True)
+        return properties_info
 
+    @staticmethod
     def _extract_dates_prices(
         property_card: BeautifulSoup,
-    ) -> tuple[list[str], list[int | str]]:
+    ) -> tuple[list[str], list[int | None]]:
         prices_dates = property_card.find_all("td")[2:]
 
         dates = []
@@ -106,6 +92,46 @@ class SoldPriceRetriever:
                 if td.text[0] == "£":
                     prices.append(int(td.text[1:].replace(",", "")))
                 else:
-                    prices.append("")
+                    prices.append(None)
 
         return dates, prices
+
+    @staticmethod
+    def _get_houses(soup: BeautifulSoup) -> ResultSet[Tag]:
+        return soup.find_all("a", attrs={"data-testid": "propertyCard"})
+
+    @staticmethod
+    def _get_address(house: Tag) -> str:
+        return house.find("h2").text
+
+    @staticmethod
+    def _get_property_type(house: Tag) -> str | None:
+        property_type_div = house.find_all(
+            "div",
+            attrs={"aria-label": re.compile(r"property type:", re.IGNORECASE)},
+        )
+        property_type = (
+            property_type_div[0].text.replace("Property Type: ", "")
+            if property_type_div
+            else None
+        )
+
+        return property_type
+
+    @staticmethod
+    def _get_bedrooms(house: Tag) -> int | None:
+        n_bedrooms_div = house.find_all(
+            "div", attrs={"aria-label": re.compile(r"bedrooms:", re.IGNORECASE)}
+        )
+        n_bedrooms = (
+            int(n_bedrooms_div[0].text.replace("Bedrooms: ", ""))
+            if n_bedrooms_div
+            else None
+        )
+
+        return n_bedrooms
+
+
+if __name__ == "__main__":
+    retriever = SoldPriceRetriever("w14-0db", Path("data"))
+    retriever.retrieve()
