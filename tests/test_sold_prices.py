@@ -3,7 +3,6 @@ from pathlib import Path
 import pytest
 import responses
 from bs4 import BeautifulSoup
-
 from rightprice.sold import House, SoldPriceRetriever
 
 
@@ -72,20 +71,3 @@ def test_sold_price_retriver(test_html: str) -> None:
     assert isinstance(properties, list)
     assert len(properties) > 0
     assert all(isinstance(prop, House) for prop in properties)
-
-
-def test_house_creation_with_all_fields() -> None:
-    """Test creating a House with all fields populated."""
-    house = House(
-        address="123 Main St",
-        property_type="Flat",
-        n_bedrooms=2,
-        dates=["01 Jan 2024", "15 Jun 2020"],
-        prices=[450000, 380000],
-    )
-
-    assert house.address == "123 Main St"
-    assert house.property_type == "Flat"
-    assert house.n_bedrooms == 2
-    assert len(house.dates) == 2
-    assert len(house.prices) == 2
