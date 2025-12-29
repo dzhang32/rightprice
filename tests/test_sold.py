@@ -27,19 +27,25 @@ def sample_soup(sample_html: str) -> BeautifulSoup:
 
 def test_init_formats_postcode() -> None:
     """Test that postcode is formatted correctly on initialization."""
-    retriever = SoldPriceRetriever("W14 0DB", Path("data"))
-    assert retriever.postcode == "w14-0db"
+    retriever = SoldPriceRetriever("HA0 1AQ", Path("data"))
+    assert retriever.postcode == "ha0-1aq"
 
 
 def test_get_url_constructs_correct_url() -> None:
     """Test URL construction for different page numbers."""
-    retriever = SoldPriceRetriever("w14-0db", Path("data"))
+    retriever = SoldPriceRetriever("ha0-1aq", Path("data"))
 
     url_page_1 = retriever._get_url(1)
-    assert url_page_1 == "https://www.rightmove.co.uk/house-prices/w14-0db.html?pageNumber=1"
+    assert (
+        url_page_1
+        == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1"
+    )
 
     url_page_5 = retriever._get_url(5)
-    assert url_page_5 == "https://www.rightmove.co.uk/house-prices/w14-0db.html?pageNumber=5"
+    assert (
+        url_page_5
+        == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=5"
+    )
 
 
 @responses.activate
@@ -55,12 +61,12 @@ def test_get_page_returns_soup(sample_html: str) -> None:
     # Register a mock HTTP response
     responses.add(
         responses.GET,
-        "https://www.rightmove.co.uk/house-prices/w14-0db.html?pageNumber=1",
+        "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1",
         body=sample_html,
-        status=200
+        status=200,
     )
 
-    retriever = SoldPriceRetriever("w14-0db", Path("data"))
+    retriever = SoldPriceRetriever("ha0-1aq", Path("data"))
     soup = retriever._get_page(retriever._get_url(1))
 
     assert isinstance(soup, BeautifulSoup)
@@ -69,7 +75,7 @@ def test_get_page_returns_soup(sample_html: str) -> None:
 
 def test_extract_page_count(sample_soup: BeautifulSoup) -> None:
     """Test extraction of total page count from HTML."""
-    retriever = SoldPriceRetriever("w14-0db", Path("data"))
+    retriever = SoldPriceRetriever("ha0-1aq", Path("data"))
     page_count = retriever._extract_page_count(sample_soup)
 
     assert isinstance(page_count, int)
@@ -78,7 +84,7 @@ def test_extract_page_count(sample_soup: BeautifulSoup) -> None:
 
 def test_extract_property_info(sample_soup: BeautifulSoup) -> None:
     """Test extraction of property information from HTML page."""
-    retriever = SoldPriceRetriever("w14-0db", Path("data"))
+    retriever = SoldPriceRetriever("ha0-1aq", Path("data"))
     properties = retriever._extract_property_info(sample_soup)
 
     assert isinstance(properties, list)
@@ -152,18 +158,18 @@ def test_retrieve_makes_multiple_requests(sample_html: str) -> None:
     # Mock responses for pages 1 and 2
     responses.add(
         responses.GET,
-        "https://www.rightmove.co.uk/house-prices/w14-0db.html?pageNumber=1",
+        "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1",
         body=sample_html,
-        status=200
+        status=200,
     )
     responses.add(
         responses.GET,
-        "https://www.rightmove.co.uk/house-prices/w14-0db.html?pageNumber=2",
+        "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=2",
         body=sample_html,
-        status=200
+        status=200,
     )
 
-    retriever = SoldPriceRetriever("w14-0db", Path("data"))
+    retriever = SoldPriceRetriever("ha0-1aq", Path("data"))
     retriever.retrieve()
 
     # Verify that both URLs were called
@@ -179,7 +185,7 @@ def test_house_creation_with_all_fields() -> None:
         property_type="Flat",
         n_bedrooms=2,
         dates=["01 Jan 2024", "15 Jun 2020"],
-        prices=[450000, 380000]
+        prices=[450000, 380000],
     )
 
     assert house.address == "123 Main St"
@@ -196,7 +202,7 @@ def test_house_creation_with_optional_none() -> None:
         property_type=None,
         n_bedrooms=None,
         dates=["20 Mar 2023"],
-        prices=[675000]
+        prices=[675000],
     )
 
     assert house.address == "456 Oak Ave"
@@ -211,7 +217,7 @@ def test_house_with_undisclosed_prices() -> None:
         property_type="Detached",
         n_bedrooms=4,
         dates=["12 Sep 2022", "05 May 2019"],
-        prices=[None, 550000]
+        prices=[None, 550000],
     )
 
     assert house.prices[0] is None
