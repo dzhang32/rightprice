@@ -10,14 +10,6 @@ from rightprice.sold_prices import House, SoldPriceRetriever
 
 
 @pytest.fixture
-def fixture_dir() -> Path:
-    """
-    Return path to test fixtures directory.
-    """
-    return Path(__file__).parent / "fixtures"
-
-
-@pytest.fixture
 def test_html(fixture_dir: Path) -> str:
     """
     Load mock HTML page.
