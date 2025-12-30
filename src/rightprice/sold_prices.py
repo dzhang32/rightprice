@@ -21,38 +21,38 @@ class SoldPriceRetriever:
         self.output_dir = output_dir
 
     def retrieve(self) -> None:
-        url = self._get_url(1)
-        soup = self._get_page(url)
-        n_pages = self._extract_page_count(soup)
+        url = self.get_url(1)
+        soup = self.get_page(url)
+        n_pages = self.get_page_count(soup)
 
-        all_properties_info = []
+        houses = []
         for i in range(2):
-            url = self._get_url(i + 1)
-            soup = self._get_page(url)
-            properties_info = self._extract_property_info(soup)
-            properties_info.append(properties_info)
+            url = self.get_url(i + 1)
+            soup = self.get_page(url)
+            house = self.get_house_info(soup)
+            houses.append(house)
 
-    def _get_url(self, page_number: int) -> str:
+    def get_url(self, page_number: int) -> str:
         # TODO: Add more parameters.
         return f"{self.BASE_URL}{self.postcode}.html?pageNumber={str(page_number)}"
 
-    def _get_page(self, url: str) -> BeautifulSoup:
+    def get_page(self, url: str) -> BeautifulSoup:
         response = requests.get(url, headers=self.HEADERS)
         soup = BeautifulSoup(response.text, "html.parser")
 
         return soup
 
-    def _extract_page_count(self, soup: BeautifulSoup) -> int:
+    def get_page_count(self, soup: BeautifulSoup) -> int:
         dropdown = soup.find_all("div", class_="dsrm_dropdown_section")[0]
         page_text = dropdown.find_all("span")[1].text
         return int(page_text.replace("of ", ""))
 
-    def _extract_property_info(self, soup: BeautifulSoup) -> list[House]:
+    def get_house_info(self, soup: BeautifulSoup) -> list[House]:
         property_cards = soup.find_all("a", attrs={"data-testid": "propertyCard"})
         properties_info = []
 
         for card in property_cards:
-            dates, prices = self._extract_dates_prices(card)
+            dates, prices = self._get_dates_prices(card)
 
             property_info = House(
                 address=self._get_address(card),
@@ -67,7 +67,7 @@ class SoldPriceRetriever:
         return properties_info
 
     @staticmethod
-    def _extract_dates_prices(
+    def _get_dates_prices(
         property_card: BeautifulSoup,
     ) -> tuple[list[str], list[int | None]]:
         prices_dates = property_card.find_all("td")[2:]
@@ -123,8 +123,3 @@ class SoldPriceRetriever:
         )
 
         return n_bedrooms
-
-
-if __name__ == "__main__":
-    retriever = SoldPriceRetriever("w14-0db", Path("data"))
-    retriever.retrieve()

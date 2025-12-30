@@ -3,7 +3,8 @@ from pathlib import Path
 import pytest
 import responses
 from bs4 import BeautifulSoup
-from rightprice.sold import House, SoldPriceRetriever
+
+from rightprice.sold_prices import House, SoldPriceRetriever
 
 
 @pytest.fixture
@@ -42,31 +43,31 @@ def test_sold_price_retriver(test_html: str) -> None:
     assert retriever.postcode == "ha0-1aq"
 
     # Check URLs can be correctly constructed.
-    url_page_1 = retriever._get_url(1)
+    url_page_1 = retriever.get_url(1)
     assert (
         url_page_1
         == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1"
     )
 
-    url_page_5 = retriever._get_url(5)
+    url_page_5 = retriever.get_url(5)
     assert (
         url_page_5
         == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=5"
     )
 
     # Check that HTML is retrieved and parsed correctly.
-    soup = retriever._get_page(retriever._get_url(1))
+    soup = retriever.get_page(retriever.get_url(1))
 
     assert isinstance(soup, BeautifulSoup)
 
     # Check page count is retrieved.
-    page_count = retriever._extract_page_count(soup)
+    page_count = retriever.get_page_count(soup)
 
     assert isinstance(page_count, int)
     assert page_count > 0
 
     # Check property info is correctly retrieved.
-    properties = retriever._extract_property_info(soup)
+    properties = retriever.get_house_info(soup)
 
     assert isinstance(properties, list)
     assert len(properties) > 0
