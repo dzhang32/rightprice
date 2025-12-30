@@ -1,10 +1,13 @@
 # rightprice
 
-What is the right price for your property of interest?
+[![test_deploy](https://github.com/dzhang32/rightprice/actions/workflows/test_deploy.yml/badge.svg)](https://github.com/dzhang32/autogroceries/actions/rightprice/test_deploy.yml)
+[![pypi](https://img.shields.io/pypi/v/rightprice.svg)](https://pypi.org/project/rightprice/)
+
+`rightprice` helps you decide whether the property you want to buy is worth the price by retrieving the prices of sold houses. 
 
 ## Installation
 
-I recommend using [uv](https://docs.astral.sh/uv/) to manage the python version, virtual environment and `rightprice` installation:
+I recommend using [uv](https://docs.astral.sh/uv/) to manage the Python version, virtual environment and `rightprice` installation:
 
 ```bash
 uv venv --python 3.13
@@ -12,30 +15,39 @@ source .venv/bin/activate
 uv pip install rightprice
 ```
 
-## Additional setup
+## Usage
 
-### Code coverage
+`rightprice` retrieves sold property prices for a given UK postcode. `rightprice` is designed to be used as a CLI tool, with a single command:
 
-- Add a "CODECOV_TOKEN" secret (obtained from [here](https://app.codecov.io/gh/dzhang32/test_python_package/)) to your repo via `Settings` -> `Secrets and variables` -> `Actions`. 
+```bash
+> rightprice retrieve-sold-prices --help
+Usage: rightprice retrieve-sold-prices [OPTIONS] POSTCODE
 
+  Retrieve sold property prices for a given postcode.
 
-### Deploying docs to gh-pages
+Options:
+  --radius FLOAT         Search radius in miles. Valid values: 0.25, 0.5, 1,
+                         3, 5, 10.
+  --years INTEGER        Number of years back to search. Valid values: 2, 3,
+                         5, 10, 15, 20.
+  -o, --output-dir PATH  Output directory. Defaults to current directory.
+  --help                 Show this message and exit.
+```
 
-1. Go to your repository's `Settings` -> `Actions` -> `General`.
-2. Scroll to `Workflow permissions` and allow GHA to have `Read and write permissions` so it can create/push to the `gh-pages` branch.
-3. Go to `Settings` -> `Pages`.
-4. Configure your repo to deploy from the root of `gh-pages` branch.
+### Output Format
 
+The output `.csv` will be named based on the input parameters (e.g., `se3-0aa_radius-0.5_years-5.csv`) and contain the following columns:
 
+| address | property_type | n_bedrooms | date | price |
+|---------|---------------|------------|------|-------|
+| 123 Main Street, London | Semi-Detached | 3 | 15 Jan 2024 | 575000 |
+| 45 Park Road, London | Terraced | 2 | 03 Dec 2023 | 425000 |
+| 78 High Street, London | Detached | 4 | 22 Nov 2023 | 750000 |
 
+## Disclaimer
 
-### Deploying to PyPI
+️`rightprice` is developed for **educational use only**. Users are responsible for:
 
-- Go to your [PyPi publishing settings](https://pypi.org/manage/account/publishing/) and fill in the following details:
-
-    - **PyPI Project Name:** rightprice
-    - **Owner:** dzhang32
-    - **Repository name:** rightprice
-    - **Workflow name:** test_deploy.yml
-    - **Environment name:** (leave blank)
-
+- Following website's `robots.txt` and Terms of Service.
+- Using appropriate delays and respecting rate limits.
+- Complying with applicable laws.

@@ -1,11 +1,16 @@
+import logging
+
 import click
 
-from rightprice.add_one import add_one_cli
+from rightprice.cli import retrieve_sold_prices
+
 
 @click.group()
 def cli() -> None:
-    pass
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s -  %(levelname)s - %(message)s",
+    )
 
 
-# Add subcommands.
-cli.add_command(add_one_cli)
+cli.add_command(retrieve_sold_prices)

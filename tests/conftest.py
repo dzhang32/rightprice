@@ -4,8 +4,8 @@ import pytest
 
 
 @pytest.fixture
-def test_data_dir() -> Path:
+def fixture_dir() -> Path:
     """
-    Returns the path to the test data directory.
+    Return path to test fixtures directory.
     """
-    return Path(__file__).parent / "data"
+    return Path(__file__).parent / "fixtures"
