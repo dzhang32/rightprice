@@ -46,9 +46,22 @@ class SoldPriceRetriever:
 
         return pl.DataFrame(rows)
 
-    def get_url(self, page_number: int) -> str:
-        # TODO: Add more parameters.
-        return f"{self.BASE_URL}{self.postcode}.html?pageNumber={str(page_number)}"
+    def get_url(
+        self,
+        page_number: int,
+        radius: float | None = None,
+        years: int | None = None,
+    ) -> str:
+        url = f"{self.BASE_URL}{self.postcode}.html?"
+
+        extra_params = [f"pageNumber={str(page_number)}"]
+        if radius:
+            extra_params.append(f"radius={str(radius)}")
+        if years:
+            extra_params.append(f"soldIn={str(years)}")
+        extra_params = "&".join(extra_params)
+
+        return url + extra_params
 
     def get_page(self, url: str) -> BeautifulSoup:
         response = requests.get(url, headers=self.HEADERS)
