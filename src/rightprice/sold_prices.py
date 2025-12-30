@@ -5,6 +5,7 @@ import polars as pl
 import requests
 from bs4 import BeautifulSoup, ResultSet, Tag
 
+from rightprice.error import PostCodeFormatError
 from rightprice.house import House
 
 
@@ -16,8 +17,7 @@ class SoldPriceRetriever:
     }
 
     def __init__(self, postcode: str, output_dir: Path):
-        # TODO: Validate postcode.
-        self.postcode = postcode.lower().replace(" ", "-")
+        self.postcode = self._format_postcode(postcode)
         # TODO: Build output path using input postcode.
         self.output_dir = output_dir
 
@@ -81,6 +81,15 @@ class SoldPriceRetriever:
             properties_info.append(property_info)
 
         return properties_info
+
+    @staticmethod
+    def _format_postcode(postcode: str) -> str:
+        if " " not in postcode:
+            raise PostCodeFormatError(
+                "Postcode must contain a space separator e.g. SE3 0AA"
+            )
+
+        return postcode.lower().replace(" ", "-")
 
     @staticmethod
     def _get_dates_prices(
