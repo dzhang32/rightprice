@@ -69,7 +69,7 @@ def test_sold_price_retriver(fixture_dir: Path) -> None:
 @responses.activate
 def test_sold_price_retriver_integration(fixture_dir: Path) -> None:
     """
-    Test that the sold price retriever works correctly.
+    Test that the sold price retriever works end-to-end on multiple pages.
     """
     # Register mock HTTP response.
     responses.add(

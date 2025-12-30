@@ -13,6 +13,10 @@ logger = logging.getLogger(__name__)
 
 
 class SoldPriceRetriever:
+    """
+    Retrieves sold property prices for a given postcode.
+    """
+
     BASE_URL = "https://www.rightmove.co.uk/house-prices/"
     HEADERS = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -25,11 +29,25 @@ class SoldPriceRetriever:
         radius: float | None = None,
         years: int | None = None,
     ):
+        """
+        Initialize the sold price retriever.
+
+        Args:
+            postcode: UK postcode with space separator (e.g. "SE3 0AA").
+            radius: Number of miles from the postcode to search for properties. Valid values: 0.25, 0.5, 1, 3, 5, 10.
+            years: Number of years back from the current date to search for sold properties. Valid values: 2, 3, 5, 10, 15, 20.
+        """
         self.postcode = self._validate_postcode(postcode)
         self.radius = self._validate_radius(radius)
         self.years = self._validate_radius(years)
 
     def retrieve(self) -> pl.DataFrame:
+        """
+        Retrieve all sold property prices for the configured postcode.
+
+        Returns:
+            DataFrame with columns: address, property_type, n_bedrooms, date, price.
+        """
         # Obtain the total number of pages of houses.
         url = self.get_url(1)
         soup = self.get_page(url)
@@ -63,6 +81,15 @@ class SoldPriceRetriever:
         self,
         page_number: int,
     ) -> str:
+        """
+        Build the URL for a specific page number.
+
+        Args:
+            page_number: The page number to retrieve.
+
+        Returns:
+            The complete URL with query parameters.
+        """
         url = f"{self.BASE_URL}{self.postcode}.html?"
 
         # Build the URL query.
@@ -76,18 +103,45 @@ class SoldPriceRetriever:
         return url + extra_params
 
     def get_page(self, url: str) -> BeautifulSoup:
+        """
+        Fetch and parse an HTML page.
+
+        Args:
+            url: The URL to fetch.
+
+        Returns:
+            Parsed HTML as a BeautifulSoup object.
+        """
         response = requests.get(url, headers=self.HEADERS)
         soup = BeautifulSoup(response.text, "html.parser")
 
         return soup
 
     def get_page_count(self, soup: BeautifulSoup) -> int:
+        """
+        Extract the total number of pages from the HTML.
+
+        Args:
+            soup: Parsed HTML page.
+
+        Returns:
+            Total number of pages available.
+        """
         dropdown = soup.find_all("div", class_="dsrm_dropdown_section")[0]
         page_text = dropdown.find_all("span")[1].text
 
         return int(page_text.replace("of ", ""))
 
     def get_houses_info(self, soup: BeautifulSoup) -> list[House]:
+        """
+        Extract information for all properties on a page.
+
+        Args:
+            soup: Parsed HTML page.
+
+        Returns:
+            List of House objects containing property details.
+        """
         property_cards = soup.find_all("a", attrs={"data-testid": "propertyCard"})
         properties_info = []
 
@@ -108,6 +162,18 @@ class SoldPriceRetriever:
 
     @staticmethod
     def _validate_postcode(postcode: str) -> str:
+        """
+        Validate and format postcode for URL usage.
+
+        Args:
+            postcode: UK postcode with space separator.
+
+        Returns:
+            Lowercase postcode with space replaced by hyphen.
+
+        Raises:
+            PostCodeFormatError: If postcode doesn't contain a space.
+        """
         if " " not in postcode:
             raise PostCodeFormatError(
                 "Postcode must contain a space separator e.g. SE3 0AA"
@@ -119,6 +185,19 @@ class SoldPriceRetriever:
     def _validate_radius(
         radius: float | None, choices=[0.25, 0.5, 1, 3, 5, 10]
     ) -> float:
+        """
+        Validate that radius is one of the allowed values.
+
+        Args:
+            radius: Search radius in miles.
+            choices: Valid radius values.
+
+        Returns:
+            The validated radius value.
+
+        Raises:
+            InvalidRadiusError: If radius is not in the allowed choices.
+        """
         if radius is not None and radius not in choices:
             choices_joined = ", ".join([str(x) for x in choices])
             raise InvalidRadiusError(
@@ -129,6 +208,19 @@ class SoldPriceRetriever:
 
     @staticmethod
     def _validate_years(years: int | None, choices=[2, 3, 5, 10, 15, 20]) -> int:
+        """
+        Validate that years is one of the allowed values.
+
+        Args:
+            years: Number of years to search back.
+            choices: Valid year values.
+
+        Returns:
+            The validated years value.
+
+        Raises:
+            InvalidYearsError: If years is not in the allowed choices.
+        """
         if years is not None and years not in choices:
             choices_joined = ", ".join([str(x) for x in choices])
             raise InvalidYearsError(
@@ -141,6 +233,15 @@ class SoldPriceRetriever:
     def _get_dates_prices(
         property_card: BeautifulSoup,
     ) -> tuple[list[str], list[int | None]]:
+        """
+        Extract sale dates and prices from a property card.
+
+        Args:
+            property_card: Parsed property card HTML.
+
+        Returns:
+            Tuple of (dates, prices) where dates are strings and prices are integers or None.
+        """
         # Extract table cells containing date/price pairs (skip first 2 cells).
         table_cells = property_card.find_all("td")[2:]
 
@@ -172,14 +273,41 @@ class SoldPriceRetriever:
 
     @staticmethod
     def _get_houses(soup: BeautifulSoup) -> ResultSet[Tag]:
+        """
+        Extract all property card elements from the page.
+
+        Args:
+            soup: Parsed HTML page.
+
+        Returns:
+            Collection of property card HTML elements.
+        """
         return soup.find_all("a", attrs={"data-testid": "propertyCard"})
 
     @staticmethod
     def _get_address(house: Tag) -> str:
+        """
+        Extract the property address from a property card.
+
+        Args:
+            house: Property card HTML element.
+
+        Returns:
+            The property address.
+        """
         return house.find("h2").text
 
     @staticmethod
     def _get_property_type(house: Tag) -> str | None:
+        """
+        Extract the property type from a property card.
+
+        Args:
+            house: Property card HTML element.
+
+        Returns:
+            The property type, or None if not found.
+        """
         property_type_div = house.find_all(
             "div",
             attrs={"aria-label": re.compile(r"property type:", re.IGNORECASE)},
@@ -194,6 +322,15 @@ class SoldPriceRetriever:
 
     @staticmethod
     def _get_bedrooms(house: Tag) -> int | None:
+        """
+        Extract the number of bedrooms from a property card.
+
+        Args:
+            house: Property card HTML element.
+
+        Returns:
+            The number of bedrooms, or None if not found.
+        """
         n_bedrooms_div = house.find_all(
             "div", attrs={"aria-label": re.compile(r"bedrooms:", re.IGNORECASE)}
         )
