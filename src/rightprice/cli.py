@@ -9,7 +9,13 @@ logger = logging.getLogger(__name__)
 
 
 @click.command()
-@click.argument("postcode")
+@click.option(
+    "--postcode",
+    "-p",
+    type=str,
+    required=True,
+    help="UK postcode to search for sold prices.",
+)
 @click.option(
     "--radius",
     type=float,

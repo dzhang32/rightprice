@@ -29,7 +29,16 @@ def test_retrieve_sold_prices(fixture_dir: Path, tmp_path: Path) -> None:
     runner = CliRunner()
     result = runner.invoke(
         retrieve_sold_prices,
-        ["HA0 1AQ", "--radius", "0.25", "--years", "3", "--output-dir", str(tmp_path)],
+        [
+            "--postcode",
+            "HA0 1AQ",
+            "--radius",
+            "0.25",
+            "--years",
+            "3",
+            "--output-dir",
+            str(tmp_path),
+        ],
     )
 
     assert result.exit_code == 0

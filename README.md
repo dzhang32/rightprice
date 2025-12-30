@@ -22,11 +22,12 @@ uv pip install rightprice
 
 ```bash
 > rightprice retrieve-sold-prices --help
-Usage: rightprice retrieve-sold-prices [OPTIONS] POSTCODE
+Usage: rightprice retrieve-sold-prices [OPTIONS]
 
   Retrieve sold property prices for a given postcode.
 
 Options:
+  -p, --postcode TEXT    UK postcode to search for sold prices.  [required]
   --radius FLOAT         Search radius in miles. Valid values: 0.25, 0.5, 1,
                          3, 5, 10.
   --years INTEGER        Number of years back to search. Valid values: 2, 3,
