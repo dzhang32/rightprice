@@ -1,6 +1,6 @@
 [project]
 name = "rightprice"
-version = "0.1.0"
+version = "0.2.0"
 description = "What is the right price for your property of interest?"
 authors = [
     { name = "David Zhang" },
