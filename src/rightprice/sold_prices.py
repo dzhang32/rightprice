@@ -49,16 +49,14 @@ class SoldPriceRetriever:
     def get_url(
         self,
         page_number: int,
-        radius: float | None = None,
-        years: int | None = None,
     ) -> str:
         url = f"{self.BASE_URL}{self.postcode}.html?"
 
         extra_params = [f"pageNumber={str(page_number)}"]
-        if radius:
-            extra_params.append(f"radius={str(radius)}")
-        if years:
-            extra_params.append(f"soldIn={str(years)}")
+        if self.radius:
+            extra_params.append(f"radius={str(self.radius)}")
+        if self.years:
+            extra_params.append(f"soldIn={str(self.years)}")
         extra_params = "&".join(extra_params)
 
         return url + extra_params

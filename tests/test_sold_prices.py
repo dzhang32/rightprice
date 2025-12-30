@@ -9,16 +9,8 @@ from rightprice.error import InvalidRadiusError, InvalidYearsError, PostCodeForm
 from rightprice.sold_prices import House, SoldPriceRetriever
 
 
-@pytest.fixture
-def test_html(fixture_dir: Path) -> str:
-    """
-    Load mock HTML page.
-    """
-    return (fixture_dir / "sold_prices_page_1.html").read_text()
-
-
 @responses.activate
-def test_sold_price_retriver(test_html: str) -> None:
+def test_sold_price_retriver(fixture_dir: Path) -> None:
     """
     Test that the sold price retriever works correctly.
     """
@@ -26,7 +18,7 @@ def test_sold_price_retriver(test_html: str) -> None:
     responses.add(
         responses.GET,
         "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1",
-        body=test_html,
+        body=(fixture_dir / "postcode_page_1.html").read_text(),
         status=200,
     )
 
@@ -54,18 +46,6 @@ def test_sold_price_retriver(test_html: str) -> None:
         retriever.get_url(5)
         == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=5"
     )
-    assert (
-        retriever.get_url(1, radius=0.25, years=None)
-        == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1&radius=0.25"
-    )
-    assert (
-        retriever.get_url(5, radius=None, years=2)
-        == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=5&soldIn=2"
-    )
-    assert (
-        retriever.get_url(1, radius=0.25, years=2)
-        == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1&radius=0.25&soldIn=2"
-    )
 
     # Check that HTML is retrieved and parsed correctly.
     soup = retriever.get_page(retriever.get_url(1))
@@ -87,19 +67,25 @@ def test_sold_price_retriver(test_html: str) -> None:
 
 
 @responses.activate
-def test_sold_price_retriver_integration(test_html: str) -> None:
+def test_sold_price_retriver_integration(fixture_dir: Path) -> None:
     """
     Test that the sold price retriever works correctly.
     """
     # Register mock HTTP response.
     responses.add(
         responses.GET,
-        "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1",
-        body=test_html,
+        "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1&radius=0.25&soldIn=3",
+        body=(fixture_dir / "postcode_radius_year_page_1.html").read_text(),
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=2&radius=0.25&soldIn=3",
+        body=(fixture_dir / "postcode_radius_year_page_2.html").read_text(),
         status=200,
     )
 
-    retriever = SoldPriceRetriever("HA0 1AQ")
+    retriever = SoldPriceRetriever("HA0 1AQ", radius=0.25, years=3)
     sold_prices = retriever.retrieve()
 
     assert isinstance(sold_prices, DataFrame)
