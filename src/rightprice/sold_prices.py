@@ -1,6 +1,7 @@
 import re
 from pathlib import Path
 
+import polars as pl
 import requests
 from bs4 import BeautifulSoup, ResultSet, Tag
 
@@ -20,17 +21,32 @@ class SoldPriceRetriever:
         # TODO: Build output path using input postcode.
         self.output_dir = output_dir
 
-    def retrieve(self) -> None:
+    def retrieve(self) -> pl.DataFrame:
+        """Retrieve sold price data for all pages.
+
+        Returns:
+            Polars DataFrame with columns: address, property_type, n_bedrooms, date, price.
+            Each date/price pair becomes a separate row.
+        """
         url = self.get_url(1)
         soup = self.get_page(url)
         n_pages = self.get_page_count(soup)
 
         houses = []
-        for i in range(2):
+        for i in range(n_pages):
             url = self.get_url(i + 1)
             soup = self.get_page(url)
-            house = self.get_house_info(soup)
-            houses.append(house)
+            house_list = self.get_house_info(soup)
+            houses.extend(house_list)
+
+        # Flatten list[House] to rows where each date/price is a row
+        rows = []
+        for house in houses:
+            base = house.model_dump(exclude={"dates", "prices"})
+            for date, price in zip(house.dates, house.prices):
+                rows.append({**base, "date": date, "price": price})
+
+        return pl.DataFrame(rows)
 
     def get_url(self, page_number: int) -> str:
         # TODO: Add more parameters.
