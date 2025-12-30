@@ -4,7 +4,7 @@ What is the right price for your property of interest?
 
 ## Installation
 
-I recommend using [uv](https://docs.astral.sh/uv/) to manage the python version, virtual environment and `rightprice` installation:
+I recommend using [uv](https://docs.astral.sh/uv/) to manage the Python version, virtual environment and `rightprice` installation:
 
 ```bash
 uv venv --python 3.13
@@ -12,30 +12,52 @@ source .venv/bin/activate
 uv pip install rightprice
 ```
 
-## Additional setup
+## Usage
 
-### Code coverage
+`rightprice` retrieves sold property prices for a given UK postcode, allowing you to analyze historical sale data in your area of interest.
 
-- Add a "CODECOV_TOKEN" secret (obtained from [here](https://app.codecov.io/gh/dzhang32/test_python_package/)) to your repo via `Settings` -> `Secrets and variables` -> `Actions`. 
+### Basic Usage
 
+```python
+from rightprice.sold_prices import SoldPriceRetriever
 
-### Deploying docs to gh-pages
+# Retrieve sold prices for a postcode
+retriever = SoldPriceRetriever("SE3 0AA")
+df = retriever.retrieve()
 
-1. Go to your repository's `Settings` -> `Actions` -> `General`.
-2. Scroll to `Workflow permissions` and allow GHA to have `Read and write permissions` so it can create/push to the `gh-pages` branch.
-3. Go to `Settings` -> `Pages`.
-4. Configure your repo to deploy from the root of `gh-pages` branch.
+# View the data
+print(df)
+```
 
+### Advanced Options
 
+You can filter results by search radius and time period:
 
+```python
+# Search within 0.5 miles, last 5 years
+retriever = SoldPriceRetriever(
+    postcode="SE3 0AA",
+    radius=0.5,    # Valid: 0.25, 0.5, 1, 3, 5, 10 (miles)
+    years=5        # Valid: 2, 3, 5, 10, 15, 20 (years)
+)
+df = retriever.retrieve()
+```
 
-### Deploying to PyPI
+### Output Format
 
-- Go to your [PyPi publishing settings](https://pypi.org/manage/account/publishing/) and fill in the following details:
+The returned DataFrame contains the following columns:
 
-    - **PyPI Project Name:** rightprice
-    - **Owner:** dzhang32
-    - **Repository name:** rightprice
-    - **Workflow name:** test_deploy.yml
-    - **Environment name:** (leave blank)
+- `address` - Property address
+- `property_type` - Type of property (e.g., "Detached", "Semi-Detached")
+- `n_bedrooms` - Number of bedrooms
+- `date` - Sale date
+- `price` - Sale price in GBP
 
+## Disclaimer
+
+**This tool is for educational and personal research purposes only.**
+
+Please ensure you:
+- Respect the website's `robots.txt` and terms of service
+- Use rate limiting to avoid overloading servers (the tool includes a 1-second delay between page requests)
+- Do not use this for commercial purposes without proper authorization
