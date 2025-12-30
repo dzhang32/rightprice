@@ -38,14 +38,13 @@ def test_sold_price_retriver(test_html: str) -> None:
         status=200,
     )
 
-    retriever = SoldPriceRetriever("HA0 1AQ", Path("data"))
+    retriever = SoldPriceRetriever("HA0 1AQ")
 
     # Check postcode is formatted correctly.
     assert retriever.postcode == "ha0-1aq"
     # And postcode validator catches user input errors.
     with pytest.raises(PostCodeFormatError) as e:
         retriever._format_postcode("BADPOSTCODE")
-
         assert "Postcode must contain a space separator" in str(e.value)
 
     # Check URLs can be correctly constructed.
@@ -93,7 +92,7 @@ def test_sold_price_retriver_integration(test_html: str) -> None:
         status=200,
     )
 
-    retriever = SoldPriceRetriever("HA0 1AQ", Path("data"))
+    retriever = SoldPriceRetriever("HA0 1AQ")
     sold_prices = retriever.retrieve()
 
     assert isinstance(sold_prices, DataFrame)

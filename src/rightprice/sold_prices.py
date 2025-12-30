@@ -1,5 +1,4 @@
 import re
-from pathlib import Path
 
 import polars as pl
 import requests
@@ -16,10 +15,8 @@ class SoldPriceRetriever:
         + "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
 
-    def __init__(self, postcode: str, output_dir: Path):
+    def __init__(self, postcode: str):
         self.postcode = self._format_postcode(postcode)
-        # TODO: Build output path using input postcode.
-        self.output_dir = output_dir
 
     def retrieve(self) -> pl.DataFrame:
         """Retrieve sold price data for all pages.
