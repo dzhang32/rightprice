@@ -4,7 +4,7 @@ import polars as pl
 import requests
 from bs4 import BeautifulSoup, ResultSet, Tag
 
-from rightprice.error import PostCodeFormatError
+from rightprice.error import InvalidRadiusError, InvalidYearsError, PostCodeFormatError
 from rightprice.house import House
 
 
@@ -15,16 +15,17 @@ class SoldPriceRetriever:
         + "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
 
-    def __init__(self, postcode: str):
-        self.postcode = self._format_postcode(postcode)
+    def __init__(
+        self,
+        postcode: str,
+        radius: float | None = None,
+        years: int | None = None,
+    ):
+        self.postcode = self._validate_postcode(postcode)
+        self.radius = self._validate_radius(radius)
+        self.years = self._validate_radius(years)
 
     def retrieve(self) -> pl.DataFrame:
-        """Retrieve sold price data for all pages.
-
-        Returns:
-            Polars DataFrame with columns: address, property_type, n_bedrooms, date, price.
-            Each date/price pair becomes a separate row.
-        """
         url = self.get_url(1)
         soup = self.get_page(url)
         n_pages = self.get_page_count(soup)
@@ -80,13 +81,35 @@ class SoldPriceRetriever:
         return properties_info
 
     @staticmethod
-    def _format_postcode(postcode: str) -> str:
+    def _validate_postcode(postcode: str) -> str:
         if " " not in postcode:
             raise PostCodeFormatError(
                 "Postcode must contain a space separator e.g. SE3 0AA"
             )
 
         return postcode.lower().replace(" ", "-")
+
+    @staticmethod
+    def _validate_radius(
+        radius: float | None, choices=[0.25, 0.5, 1, 3, 5, 10]
+    ) -> float:
+        if radius is not None and radius not in choices:
+            choices_joined = ", ".join([str(x) for x in choices])
+            raise InvalidRadiusError(
+                f"radius must be one of: {', '.join(choices_joined)}"
+            )
+
+        return radius
+
+    @staticmethod
+    def _validate_years(years: int | None, choices=[2, 3, 5, 10, 15, 20]) -> int:
+        if years is not None and years not in choices:
+            choices_joined = ", ".join([str(x) for x in choices])
+            raise InvalidYearsError(
+                f"years must be one of: {', '.join(choices_joined)}"
+            )
+
+        return years
 
     @staticmethod
     def _get_dates_prices(

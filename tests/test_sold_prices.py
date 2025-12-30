@@ -5,7 +5,7 @@ import responses
 from bs4 import BeautifulSoup
 from polars import DataFrame
 
-from rightprice.error import PostCodeFormatError
+from rightprice.error import InvalidRadiusError, InvalidYearsError, PostCodeFormatError
 from rightprice.sold_prices import House, SoldPriceRetriever
 
 
@@ -40,23 +40,26 @@ def test_sold_price_retriver(test_html: str) -> None:
 
     retriever = SoldPriceRetriever("HA0 1AQ")
 
-    # Check postcode is formatted correctly.
+    # Check postcode is formatted and validated correctly.
     assert retriever.postcode == "ha0-1aq"
-    # And postcode validator catches user input errors.
+
     with pytest.raises(PostCodeFormatError) as e:
-        retriever._format_postcode("BADPOSTCODE")
+        retriever._validate_postcode("BADPOSTCODE")
         assert "Postcode must contain a space separator" in str(e.value)
 
-    # Check URLs can be correctly constructed.
-    url_page_1 = retriever.get_url(1)
-    assert (
-        url_page_1
-        == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1"
-    )
+    # Check radius is validated correctly.
+    with pytest.raises(InvalidRadiusError) as e:
+        retriever._validate_radius(100)
+        assert "radius must be one of" in str(e.value)
 
-    url_page_5 = retriever.get_url(5)
+    # Check years is validated correctly.
+    with pytest.raises(InvalidYearsError) as e:
+        retriever._validate_years(100)
+        assert "years must be one of" in str(e.value)
+
+    # Check URLs can be correctly constructed.
     assert (
-        url_page_5
+        retriever.get_url(5)
         == "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=5"
     )
 
