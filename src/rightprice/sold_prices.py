@@ -1,4 +1,6 @@
+import logging
 import re
+import time
 
 import polars as pl
 import requests
@@ -6,6 +8,8 @@ from bs4 import BeautifulSoup, ResultSet, Tag
 
 from rightprice.error import InvalidRadiusError, InvalidYearsError, PostCodeFormatError
 from rightprice.house import House
+
+logger = logging.getLogger(__name__)
 
 
 class SoldPriceRetriever:
@@ -32,10 +36,13 @@ class SoldPriceRetriever:
 
         houses = []
         for i in range(n_pages):
-            url = self.get_url(i + 1)
+            page_number = i + 1
+            logger.info(f"Fetching sold prices from page {page_number}")
+            url = self.get_url(page_number)
             soup = self.get_page(url)
             house_list = self.get_house_info(soup)
             houses.extend(house_list)
+            time.sleep(1)
 
         # Flatten list[House] to rows where each date/price is a row
         rows = []
