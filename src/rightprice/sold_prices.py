@@ -98,9 +98,9 @@ class SoldPriceRetriever:
             extra_params.append(f"radius={str(self.radius)}")
         if self.years:
             extra_params.append(f"soldIn={str(self.years)}")
-        extra_params = "&".join(extra_params)
+        extra_params_joined = "&".join(extra_params)
 
-        return url + extra_params
+        return url + extra_params_joined
 
     def get_page(self, url: str) -> BeautifulSoup:
         """
@@ -184,7 +184,7 @@ class SoldPriceRetriever:
     @staticmethod
     def _validate_radius(
         radius: float | None, choices=[0.25, 0.5, 1, 3, 5, 10]
-    ) -> float:
+    ) -> float | None:
         """
         Validate that radius is one of the allowed values.
 
@@ -207,7 +207,7 @@ class SoldPriceRetriever:
         return radius
 
     @staticmethod
-    def _validate_years(years: int | None, choices=[2, 3, 5, 10, 15, 20]) -> int:
+    def _validate_years(years: int | None, choices=[2, 3, 5, 10, 15, 20]) -> int | None:
         """
         Validate that years is one of the allowed values.
 
@@ -245,8 +245,8 @@ class SoldPriceRetriever:
         # Extract table cells containing date/price pairs (skip first 2 cells).
         table_cells = property_card.find_all("td")[2:]
 
-        dates = []
-        prices = []
+        dates: list[str] = []
+        prices: list[int | None] = []
 
         # Process cells in pairs: (date, price).
         for i in range(0, len(table_cells), 2):
