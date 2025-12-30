@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 import responses
 from bs4 import BeautifulSoup
+from polars import DataFrame
 
 from rightprice.sold_prices import House, SoldPriceRetriever
 
@@ -23,7 +24,6 @@ def test_html(fixture_dir: Path) -> str:
     return (fixture_dir / "sold_prices_page_1.html").read_text()
 
 
-# TODO - add integration test
 @responses.activate
 def test_sold_price_retriver(test_html: str) -> None:
     """
@@ -61,10 +61,10 @@ def test_sold_price_retriver(test_html: str) -> None:
     assert isinstance(soup, BeautifulSoup)
 
     # Check page count is retrieved.
-    page_count = retriever.get_page_count(soup)
+    n_pages = retriever.get_page_count(soup)
 
-    assert isinstance(page_count, int)
-    assert page_count > 0
+    assert isinstance(n_pages, int)
+    assert n_pages > 0
 
     # Check property info is correctly retrieved.
     properties = retriever.get_house_info(soup)
@@ -72,3 +72,30 @@ def test_sold_price_retriver(test_html: str) -> None:
     assert isinstance(properties, list)
     assert len(properties) > 0
     assert all(isinstance(prop, House) for prop in properties)
+
+
+@responses.activate
+def test_sold_price_retriver_integration(test_html: str) -> None:
+    """
+    Test that the sold price retriever works correctly.
+    """
+    # Register mock HTTP response.
+    responses.add(
+        responses.GET,
+        "https://www.rightmove.co.uk/house-prices/ha0-1aq.html?pageNumber=1",
+        body=test_html,
+        status=200,
+    )
+
+    retriever = SoldPriceRetriever("HA0 1AQ", Path("data"))
+    sold_prices = retriever.retrieve()
+
+    assert isinstance(sold_prices, DataFrame)
+    assert sold_prices.columns == [
+        "address",
+        "property_type",
+        "n_bedrooms",
+        "date",
+        "price",
+    ]
+    assert sold_prices.shape[0] > 0
