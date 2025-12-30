@@ -59,7 +59,7 @@ def test_sold_price_retriver(fixture_dir: Path) -> None:
     assert n_pages > 0
 
     # Check property info is correctly retrieved.
-    properties = retriever.get_house_info(soup)
+    properties = retriever.get_houses_info(soup)
 
     assert isinstance(properties, list)
     assert len(properties) > 0

@@ -30,6 +30,7 @@ class SoldPriceRetriever:
         self.years = self._validate_radius(years)
 
     def retrieve(self) -> pl.DataFrame:
+        # Obtain the total number of pages of houses.
         url = self.get_url(1)
         soup = self.get_page(url)
         n_pages = self.get_page_count(soup)
@@ -38,16 +39,21 @@ class SoldPriceRetriever:
         for i in range(n_pages):
             page_number = i + 1
             logger.info(f"Fetching sold prices from page {page_number}")
+
+            # Fetch the current page.
             url = self.get_url(page_number)
             soup = self.get_page(url)
-            house_list = self.get_house_info(soup)
-            houses.extend(house_list)
+
+            # Extract the information for each house.
+            houses_per_page = self.get_houses_info(soup)
+            houses.extend(houses_per_page)
+
             time.sleep(1)
 
-        # Flatten list[House] to rows where each date/price is a row
         rows = []
         for house in houses:
             base = house.model_dump(exclude={"dates", "prices"})
+            # Ensure there is 1 row per date/price for each house.
             for date, price in zip(house.dates, house.prices):
                 rows.append({**base, "date": date, "price": price})
 
@@ -59,6 +65,7 @@ class SoldPriceRetriever:
     ) -> str:
         url = f"{self.BASE_URL}{self.postcode}.html?"
 
+        # Build the URL query.
         extra_params = [f"pageNumber={str(page_number)}"]
         if self.radius:
             extra_params.append(f"radius={str(self.radius)}")
@@ -77,9 +84,10 @@ class SoldPriceRetriever:
     def get_page_count(self, soup: BeautifulSoup) -> int:
         dropdown = soup.find_all("div", class_="dsrm_dropdown_section")[0]
         page_text = dropdown.find_all("span")[1].text
+
         return int(page_text.replace("of ", ""))
 
-    def get_house_info(self, soup: BeautifulSoup) -> list[House]:
+    def get_houses_info(self, soup: BeautifulSoup) -> list[House]:
         property_cards = soup.find_all("a", attrs={"data-testid": "propertyCard"})
         properties_info = []
 
@@ -133,22 +141,32 @@ class SoldPriceRetriever:
     def _get_dates_prices(
         property_card: BeautifulSoup,
     ) -> tuple[list[str], list[int | None]]:
-        prices_dates = property_card.find_all("td")[2:]
+        # Extract table cells containing date/price pairs (skip first 2 cells).
+        table_cells = property_card.find_all("td")[2:]
 
         dates = []
         prices = []
 
-        for i, td in enumerate(prices_dates):
-            if td.text == "":
+        # Process cells in pairs: (date, price).
+        for i in range(0, len(table_cells), 2):
+            # Stop if we've run out of pairs or encounter an empty date.
+            if i + 1 >= len(table_cells) or not table_cells[i].text:
                 break
 
-            if i % 2 == 0:
-                dates.append(td.text)
+            date_cell = table_cells[i]
+            price_cell = table_cells[i + 1]
+
+            # Extract date.
+            dates.append(date_cell.text)
+
+            # Extract and parse price.
+            price_text = price_cell.text
+            if price_text.startswith("£"):
+                # Remove £ symbol and commas, then convert to integer.
+                price = int(price_text[1:].replace(",", ""))
+                prices.append(price)
             else:
-                if td.text[0] == "£":
-                    prices.append(int(td.text[1:].replace(",", "")))
-                else:
-                    prices.append(None)
+                prices.append(None)
 
         return dates, prices
 
