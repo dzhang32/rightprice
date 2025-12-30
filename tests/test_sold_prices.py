@@ -5,6 +5,7 @@ import responses
 from bs4 import BeautifulSoup
 from polars import DataFrame
 
+from rightprice.error import PostCodeFormatError
 from rightprice.sold_prices import House, SoldPriceRetriever
 
 
@@ -41,6 +42,11 @@ def test_sold_price_retriver(test_html: str) -> None:
 
     # Check postcode is formatted correctly.
     assert retriever.postcode == "ha0-1aq"
+    # And postcode validator catches user input errors.
+    with pytest.raises(PostCodeFormatError) as e:
+        retriever._format_postcode("BADPOSTCODE")
+
+        assert "Postcode must contain a space separator" in str(e.value)
 
     # Check URLs can be correctly constructed.
     url_page_1 = retriever.get_url(1)

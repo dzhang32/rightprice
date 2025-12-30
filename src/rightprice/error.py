@@ -1,0 +1,2 @@
+class PostCodeFormatError(ValueError):
+    pass
