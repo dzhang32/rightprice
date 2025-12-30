@@ -1,6 +1,7 @@
 # rightprice
 
 [![test_deploy](https://github.com/dzhang32/rightprice/actions/workflows/test_deploy.yml/badge.svg)](https://github.com/dzhang32/autogroceries/actions/rightprice/test_deploy.yml)
+[![codecov](https://codecov.io/gh/dzhang32/rightprice/branch/main/graph/badge.svg)](https://codecov.io/gh/dzhang32/rightprice)
 [![pypi](https://img.shields.io/pypi/v/rightprice.svg)](https://pypi.org/project/rightprice/)
 
 `rightprice` helps you decide whether the property you want to buy is worth the price by retrieving the prices of sold houses. 
